@@ -1,7 +1,7 @@
 import { SelectProjectInput } from './SelectProjectInput/SelectProjectInput.tsx';
 import { TokenType } from '../../../../../interfaces/token.ts';
 import type React from 'react';
-import { StyledInputDescription } from '../ApiTokenForm.styles';
+import { StyledInputDescription } from '../ApiTokenForm.styles.tsx';
 import useProjects from 'hooks/api/getters/useProjects/useProjects';
 import type { ApiTokenFormErrorType } from '../useApiTokenForm.ts';
 import { useOptionalPathParam } from 'hooks/useOptionalPathParam';

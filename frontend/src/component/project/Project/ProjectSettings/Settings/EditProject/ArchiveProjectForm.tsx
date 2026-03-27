@@ -18,7 +18,7 @@ export const ArchiveProjectForm = ({ featureCount }: IDeleteProjectForm) => {
     const { uiConfig } = useUiConfig();
     const { loading } = useProjectApi();
     const formatProjectArchiveApiCode = () => {
-        return `curl --location --request POST '${uiConfig.unleashUrl}/api/admin/projects/archive/${id}' \\
+        return `curl --location --request POST '${uiConfig.unleashUrl}/api/admin/projects/${id}/archive' \\
 --header 'Authorization: INSERT_API_KEY'`;
     };
 

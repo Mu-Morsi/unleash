@@ -18,7 +18,7 @@ export const RolePermissionProjectItem = ({
 }: RolePermissionProjectItemProps) => (
     <Box
         sx={(theme) => ({
-            marginLeft: hasParentPermission ? theme.spacing(1.5) : 0,
+            marginLeft: hasParentPermission ? theme.spacing(3.1) : 0,
         })}
     >
         <FormControlLabel

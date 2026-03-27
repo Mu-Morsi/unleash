@@ -16,7 +16,7 @@ import {
     StyledLabel,
     StyledTableCell,
     StyledVisibleAbsoluteLayer,
-} from './CellSortable.styles';
+} from './CellSortable.styles.ts';
 import { SortArrow } from './SortArrow/SortArrow.tsx';
 
 interface ICellSortableProps {

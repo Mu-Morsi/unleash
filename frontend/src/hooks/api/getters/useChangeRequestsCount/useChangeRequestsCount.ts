@@ -1,7 +1,6 @@
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { ChangeRequestsCountSchema } from 'openapi';
 
 const fallback: ChangeRequestsCountSchema = {
@@ -14,10 +13,10 @@ const fallback: ChangeRequestsCountSchema = {
 };
 
 export const useChangeRequestsCount = (projectId: string) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable change requests in OSS
     const { data, error, mutate } =
         useConditionalSWR<ChangeRequestsCountSchema>(
-            Boolean(projectId) && isEnterprise(),
+            Boolean(projectId),
             fallback,
             formatApiPath(
                 `api/admin/projects/${projectId}/change-requests/count`,

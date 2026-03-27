@@ -10,7 +10,7 @@ import type {
     ChangeRequestSchedule,
     ChangeRequestState,
     ChangeRequestType,
-} from '../../changeRequest.types';
+} from '../../changeRequest.types.ts';
 import { HtmlTooltip } from '../../../common/HtmlTooltip/HtmlTooltip.tsx';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useLocationSettings } from 'hooks/useLocationSettings';

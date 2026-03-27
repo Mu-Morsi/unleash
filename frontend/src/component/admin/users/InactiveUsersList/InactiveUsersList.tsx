@@ -30,7 +30,7 @@ import { TextCell } from '../../../common/Table/cells/TextCell/TextCell.tsx';
 import DeleteUser from './DeleteUser/DeleteUser.tsx';
 import { DeleteInactiveUsers } from './DeleteInactiveUsers/DeleteInactiveUsers.tsx';
 import { Link } from 'react-router-dom';
-import { StyledUsersLinkDiv } from '../Users.styles';
+import { StyledUsersLinkDiv } from '../Users.styles.ts';
 
 export const InactiveUsersList = () => {
     const { removeUser, userApiErrors } = useAdminUsersApi();

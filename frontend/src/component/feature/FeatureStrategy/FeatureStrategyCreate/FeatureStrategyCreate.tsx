@@ -26,7 +26,7 @@ import { useStrategy } from 'hooks/api/getters/useStrategy/useStrategy';
 import { useCollaborateData } from 'hooks/useCollaborateData';
 import { useFeature } from 'hooks/api/getters/useFeature/useFeature';
 import type { IFeatureToggle } from 'interfaces/featureToggle';
-import { comparisonModerator } from '../featureStrategy.utils';
+import { comparisonModerator } from '../featureStrategy.utils.ts';
 import { useChangeRequestApi } from 'hooks/api/actions/useChangeRequestApi/useChangeRequestApi';
 import { useChangeRequestsEnabled } from 'hooks/useChangeRequestsEnabled';
 import { usePendingChangeRequests } from 'hooks/api/getters/usePendingChangeRequests/usePendingChangeRequests';

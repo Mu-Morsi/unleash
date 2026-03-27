@@ -7,7 +7,7 @@ import {
     StyledCount,
     StyledProjectInfoWidgetContainer,
     StyledWidgetTitle,
-} from './ProjectInfo.styles';
+} from './ProjectInfo.styles.ts';
 import { useProjectChangeRequests } from 'hooks/api/getters/useProjectChangeRequests/useProjectChangeRequests';
 import { WidgetFooterLink } from './WidgetFooterLink.tsx';
 

@@ -31,7 +31,7 @@ import { CreateSegment } from 'component/segments/CreateSegment/CreateSegment';
 import { EditSegment } from 'component/segments/EditSegment/EditSegment';
 import type { INavigationMenuItem, IRoute } from 'interfaces/route';
 import { EnvironmentTable } from 'component/environments/EnvironmentTable/EnvironmentTable';
-import { SegmentTable } from '../segments/SegmentTable/SegmentTable.jsx';
+import { SegmentTable } from '../segments/SegmentTable/SegmentTable.js';
 import { FeaturesArchiveTable } from 'component/archive/FeaturesArchiveTable';
 import { LazyPlayground } from 'component/playground/Playground/LazyPlayground';
 import { Profile } from 'component/user/Profile/Profile';
@@ -41,15 +41,15 @@ import { LazyProject } from 'component/project/Project/LazyProject';
 import { LoginHistory } from 'component/loginHistory/LoginHistory';
 import { FeatureTypesList } from 'component/featureTypes/FeatureTypesList';
 import { ViewIntegration } from 'component/integrations/ViewIntegration/ViewIntegration';
-import { PaginatedApplicationList } from '../application/ApplicationList/PaginatedApplicationList.jsx';
+import { PaginatedApplicationList } from '../application/ApplicationList/PaginatedApplicationList.js';
 import { AddonRedirect } from 'component/integrations/AddonRedirect/AddonRedirect';
-import { Insights } from '../insights/Insights.jsx';
+import { Insights } from '../insights/Insights.js';
 import { LazyImpactMetricsPage } from '../impact-metrics/LazyImpactMetricsPage.tsx';
-import { FeedbackList } from '../feedbackNew/FeedbackList.jsx';
+import { FeedbackList } from '../feedbackNew/FeedbackList.js';
 import { Application } from 'component/application/Application';
 import { Signals } from 'component/signals/Signals';
-import { LazyCreateProject } from '../project/Project/CreateProject/LazyCreateProject.jsx';
-import { PersonalDashboard } from '../personalDashboard/PersonalDashboard.jsx';
+import { LazyCreateProject } from '../project/Project/CreateProject/LazyCreateProject.js';
+import { PersonalDashboard } from '../personalDashboard/PersonalDashboard.js';
 import { ReleaseManagement } from 'component/releases/ReleaseManagement/ReleaseManagement';
 import { CreateReleasePlanTemplate } from 'component/releases/ReleasePlanTemplate/CreateReleasePlanTemplate';
 import { EditReleasePlanTemplate } from 'component/releases/ReleasePlanTemplate/EditReleasePlanTemplate';
@@ -83,7 +83,6 @@ export const routes: IRoute[] = [
         title: 'Create',
         component: LazyCreateProject,
         type: 'protected',
-        enterprise: true,
         menu: {},
     },
     {
@@ -132,7 +131,6 @@ export const routes: IRoute[] = [
         component: ArchiveProjectList,
         type: 'protected',
         menu: {},
-        enterprise: true,
     },
 
     // Flags overview
@@ -151,7 +149,6 @@ export const routes: IRoute[] = [
         component: ChangeRequests,
         type: 'protected',
         menu: { primary: true },
-        enterprise: true,
     },
 
     // Playground
@@ -171,7 +168,6 @@ export const routes: IRoute[] = [
         component: Insights,
         type: 'protected',
         menu: { primary: true },
-        enterprise: true,
     },
 
     // Impact Metrics
@@ -181,7 +177,6 @@ export const routes: IRoute[] = [
         component: LazyImpactMetricsPage,
         type: 'protected',
         menu: { primary: true },
-        enterprise: true,
         flag: 'impactMetrics',
     },
 
@@ -299,7 +294,6 @@ export const routes: IRoute[] = [
         component: EnvironmentTable,
         type: 'protected',
         menu: { main: true },
-        enterprise: true,
     },
     {
         path: '/feedback',
@@ -316,7 +310,7 @@ export const routes: IRoute[] = [
         title: 'Release templates',
         component: ReleaseManagement,
         type: 'protected',
-        menu: { main: true, mode: ['enterprise'] },
+        menu: { main: true },
     },
     {
         path: '/release-templates/create-template',
@@ -324,8 +318,7 @@ export const routes: IRoute[] = [
         parent: '/release-templates',
         component: CreateReleasePlanTemplate,
         type: 'protected',
-        menu: { mode: ['enterprise'] },
-        enterprise: true,
+        menu: {},
     },
     {
         path: '/release-templates/edit/:templateId',
@@ -333,8 +326,7 @@ export const routes: IRoute[] = [
         parent: '/release-templates',
         component: EditReleasePlanTemplate,
         type: 'protected',
-        menu: { mode: ['enterprise'] },
-        enterprise: true,
+        menu: {},
     },
 
     // Tags

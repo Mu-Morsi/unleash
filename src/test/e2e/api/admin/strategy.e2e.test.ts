@@ -41,7 +41,7 @@ test('gets all strategies', async () => {
         .get('/api/admin/strategies')
         .expect('Content-Type', /json/)
         .expect(200);
-    expect(body.strategies).toHaveLength(6);
+    expect(body.strategies).toHaveLength(7); // includes retailUnitRollout
 });
 
 test('gets a strategy by name', async () => {
@@ -254,4 +254,25 @@ test('can update a strategy with a title', async () => {
         .send(strategy)
         .set('Content-Type', 'application/json')
         .expect(200);
+});
+
+test('gets retailUnitRollout strategy with correct parameters', async () => {
+    const { body } = await app.request
+        .get('/api/admin/strategies/retailUnitRollout')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+    expect(body.name).toBe('retailUnitRollout');
+    expect(body.description).toContain('retail unit');
+    expect(body.parameters).toHaveLength(4);
+
+    const paramNames = body.parameters.map((p: any) => p.name);
+    expect(paramNames).toContain('retailUnits');
+    expect(paramNames).toContain('rollout');
+    expect(paramNames).toContain('stickiness');
+    expect(paramNames).toContain('groupId');
+
+    const retailUnitsParam = body.parameters.find((p: any) => p.name === 'retailUnits');
+    expect(retailUnitsParam.type).toBe('list');
+    expect(retailUnitsParam.required).toBe(true);
 });

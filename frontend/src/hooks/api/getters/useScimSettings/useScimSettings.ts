@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 
 const ENDPOINT = 'api/admin/scim-settings';
 
@@ -17,10 +16,10 @@ const DEFAULT_DATA: ScimSettings = {
 };
 
 export const useScimSettings = () => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable SCIM settings in OSS
 
     const { data, error, mutate } = useConditionalSWR<ScimSettings>(
-        isEnterprise(),
+        true,
         DEFAULT_DATA,
         formatApiPath(ENDPOINT),
         fetcher,

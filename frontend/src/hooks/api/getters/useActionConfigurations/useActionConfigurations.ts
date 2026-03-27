@@ -2,20 +2,19 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { ActionConfiguration } from 'interfaces/action';
 import { useUiFlag } from 'hooks/useUiFlag';
 
 const DEFAULT_DATA: Record<string, ActionConfiguration> = {};
 
 export const useActionConfigurations = (project: string) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable actions in OSS
     const actionsEnabled = useUiFlag('automatedActions');
 
     const { data, error, mutate } = useConditionalSWR<
         Record<string, ActionConfiguration>
     >(
-        isEnterprise() && actionsEnabled,
+        actionsEnabled,
         DEFAULT_DATA,
         formatApiPath(`api/admin/projects/${project}/actions/config`),
         fetcher,

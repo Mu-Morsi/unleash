@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { ISignalEndpointToken } from 'interfaces/signal';
 import { useUiFlag } from 'hooks/useUiFlag';
 
@@ -13,13 +12,13 @@ const DEFAULT_DATA = {
 };
 
 export const useSignalEndpointTokens = (signalEndpointId: number) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable signals in OSS
     const signalsEnabled = useUiFlag('signals');
 
     const { data, error, mutate } = useConditionalSWR<{
         signalEndpointTokens: ISignalEndpointToken[];
     }>(
-        isEnterprise() && signalsEnabled,
+        signalsEnabled,
         DEFAULT_DATA,
         formatApiPath(`${ENDPOINT}/${signalEndpointId}/tokens`),
         fetcher,

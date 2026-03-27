@@ -18,19 +18,8 @@ export const Settings = () => {
     const projectId = useRequiredPathParam('projectId');
     const projectName = useProjectOverviewNameOrId(projectId);
     const { hasAccess } = useContext(AccessContext);
-    const { isOss } = useUiConfig();
+    // INGKA Fork: Removed isOss() check to enable project settings in OSS
     usePageTitle(`Project configuration – ${projectName}`);
-
-    if (isOss()) {
-        return (
-            <PageContent
-                header={<PageHeader title='General settings' />}
-                sx={{ justifyContent: 'center' }}
-            >
-                <PremiumFeature feature='project-settings' />
-            </PageContent>
-        );
-    }
 
     if (!hasAccess([UPDATE_PROJECT, PROJECT_SETTINGS_READ], projectId)) {
         return (

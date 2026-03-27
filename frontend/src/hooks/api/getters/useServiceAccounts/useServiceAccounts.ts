@@ -4,13 +4,11 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 
 export const useServiceAccounts = () => {
-    const { isEnterprise } = useUiConfig();
-
+    // INGKA Fork: Removed isEnterprise() check to enable service accounts in OSS
     const { data, error, mutate } = useConditionalSWR(
-        isEnterprise(),
+        true,
         { serviceAccounts: [], rootRoles: [] },
         formatApiPath(`api/admin/service-account`),
         fetcher,

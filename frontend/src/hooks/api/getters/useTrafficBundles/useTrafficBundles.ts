@@ -17,10 +17,10 @@ const DEFAULT_TRAFFIC_INCLUDED_ENTERPRISE = 259;
 const DEFAULT_TRAFFIC_MULTIPLIER = 1_000_000;
 
 const defaultIncludedTraffic = (
-    isEnterprise: boolean,
     billing?: string,
 ): number => {
-    if (!isEnterprise || billing === 'pay-as-you-go') {
+    // INGKA Fork: Removed isEnterprise check - always use enterprise traffic for OSS fork
+    if (billing === 'pay-as-you-go') {
         return DEFAULT_TRAFFIC_INCLUDED_PAYG;
     }
     return DEFAULT_TRAFFIC_INCLUDED_ENTERPRISE;
@@ -28,11 +28,10 @@ const defaultIncludedTraffic = (
 
 function includedTraffic(
     includedTraffic: number | undefined,
-    isEnterprise: boolean,
     billing?: string,
 ): number {
     if (includedTraffic === undefined) {
-        return defaultIncludedTraffic(isEnterprise, billing);
+        return defaultIncludedTraffic(billing);
     }
     return includedTraffic;
 }
@@ -45,7 +44,7 @@ function purchasedTraffic(purchasedTraffic: number | undefined): number {
 }
 
 export const useTrafficBundles = (): IUseTrafficBundlesOutput => {
-    const { isEnterprise, uiConfig } = useUiConfig();
+    const { uiConfig } = useUiConfig();
     const path = formatApiPath('/api/instance/trafficBundles');
     const { data, error, mutate } = useSWR<ITrafficBundles>(path, fetcher);
 
@@ -54,7 +53,6 @@ export const useTrafficBundles = (): IUseTrafficBundlesOutput => {
             includedTraffic:
                 includedTraffic(
                     data?.includedTraffic,
-                    isEnterprise(),
                     uiConfig.billing,
                 ) * DEFAULT_TRAFFIC_MULTIPLIER,
             purchasedTraffic:

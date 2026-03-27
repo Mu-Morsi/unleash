@@ -18,7 +18,7 @@ import {
     type MaintenanceSchema,
     maintenanceSchema,
 } from '../../openapi/spec/maintenance-schema.js';
-import type MaintenanceService from '../../features/maintenance/maintenance-service.js';
+import type MaintenanceService from './maintenance-service.js';
 import type { ToggleMaintenanceSchema } from '../../openapi/spec/toggle-maintenance-schema.js';
 
 export default class MaintenanceController extends Controller {

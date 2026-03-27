@@ -3,6 +3,7 @@ import DefaultStrategy from 'component/feature/StrategyTypes/DefaultStrategy/Def
 import LegacyFlexibleStrategy, {
     FlexibleStrategy,
 } from 'component/feature/StrategyTypes/FlexibleStrategy/FlexibleStrategy';
+import { RetailUnitRolloutStrategy } from 'component/feature/StrategyTypes/RetailUnitRolloutStrategy/RetailUnitRolloutStrategy';
 import GeneralStrategy from 'component/feature/StrategyTypes/GeneralStrategy/GeneralStrategy';
 import type { IFormErrors } from 'hooks/useFormErrors';
 import produce from 'immer';
@@ -78,6 +79,16 @@ export const FeatureStrategyType = <T extends StrategyFormState>({
                 <FlexibleStrategy
                     parameters={strategy.parameters ?? {}}
                     updateParameter={updateParameter}
+                    errors={errors}
+                />
+            );
+        case 'retailUnitRollout':
+            return (
+                <RetailUnitRolloutStrategy
+                    context={context}
+                    parameters={strategy.parameters ?? {}}
+                    updateParameter={updateParameter}
+                    editable={hasAccess}
                     errors={errors}
                 />
             );

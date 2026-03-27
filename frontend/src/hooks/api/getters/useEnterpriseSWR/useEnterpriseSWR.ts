@@ -1,17 +1,15 @@
 import type { BareFetcher, Key, SWRConfiguration } from 'swr';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 
+// INGKA Fork: Removed isEnterprise() check to enable enterprise features in OSS
 export const useEnterpriseSWR = <Data = any, Error = any>(
     fallback: Data,
     key: Key,
     fetcher: BareFetcher<Data>,
     options: SWRConfiguration = {},
 ) => {
-    const { isEnterprise } = useUiConfig();
-
     const result = useConditionalSWR<Data, Error>(
-        isEnterprise(),
+        true,
         fallback,
         key,
         fetcher,

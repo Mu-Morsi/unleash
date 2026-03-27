@@ -5,7 +5,7 @@ import { ChangeRequestTable } from './ChangeRequestTable.tsx';
 import {
     ScrollContainer,
     TableSearchInput,
-} from './ChangeRequestTableConfigButton.styles';
+} from './ChangeRequestTableConfigButton.styles.tsx';
 import {
     ConfigButton,
     type ConfigButtonProps,

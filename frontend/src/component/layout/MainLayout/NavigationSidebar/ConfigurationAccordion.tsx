@@ -1,7 +1,7 @@
 import { type FC, useEffect, useState } from 'react';
 import { MenuListAccordion } from './ListItems.tsx';
 import { useExpanded } from './useExpanded.ts';
-import type { NavigationMode } from './NavigationMode.tsx';
+import type { NavigationMode } from './NavigationMode.ts';
 import { IconRenderer } from './IconRenderer.tsx';
 import { ConfigurationNavigationList } from './ConfigurationNavigationList.tsx';
 import { useRoutes } from './useRoutes.ts';

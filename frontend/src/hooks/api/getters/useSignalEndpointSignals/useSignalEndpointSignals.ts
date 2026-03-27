@@ -4,7 +4,6 @@ import useSWRInfinite, {
 } from 'swr/infinite';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { ISignalEndpointSignal } from 'interfaces/signal';
 import { useUiFlag } from 'hooks/useUiFlag';
 
@@ -25,7 +24,7 @@ export const useSignalEndpointSignals = (
     limit = 50,
     options: SWRInfiniteConfiguration = {},
 ) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable signals in OSS
     const signalsEnabled = useUiFlag('signals');
 
     const getKey: SWRInfiniteKeyLoader = (
@@ -33,7 +32,7 @@ export const useSignalEndpointSignals = (
         previousPageData: SignalsResponse,
     ) => {
         // Does not meet conditions
-        if (!signalEndpointId || !isEnterprise || !signalsEnabled) return null;
+        if (!signalEndpointId || !signalsEnabled) return null;
 
         // Reached the end
         if (previousPageData && !previousPageData.signalEndpointSignals.length)

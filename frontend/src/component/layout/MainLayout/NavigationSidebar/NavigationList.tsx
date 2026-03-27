@@ -1,6 +1,6 @@
 import type { ComponentProps, FC } from 'react';
 import type { INavigationMenuItem } from 'interfaces/route';
-import type { NavigationMode } from './NavigationMode.tsx';
+import type { NavigationMode } from './NavigationMode.ts';
 import {
     ExternalFullListItem,
     MenuListItem,
@@ -75,7 +75,8 @@ export const PrimaryNavigationList: FC<{
 
     const { isOss, isEnterprise } = useUiConfig();
     const impactMetricsEnabled = useUiFlag('impactMetrics');
-    const showChangeRequestList = isEnterprise();
+    // INGKA Fork: Always show change request list in OSS
+    const showChangeRequestList = true;
 
     return (
         <StyledNavigationList>
@@ -89,10 +90,10 @@ export const PrimaryNavigationList: FC<{
                 />
             ) : null}
             <PrimaryListItem href='/playground' text='Playground' />
-            {!isOss() ? (
-                <PrimaryListItem href='/insights' text='Analytics' />
-            ) : null}
-            {!isOss() && impactMetricsEnabled ? (
+            {/* INGKA Fork: Always show Analytics in OSS */}
+            <PrimaryListItem href='/insights' text='Analytics' />
+            {/* INGKA Fork: Show Impact Metrics when flag is enabled */}
+            {impactMetricsEnabled ? (
                 <PrimaryListItem href='/impact-metrics' text='Impact Metrics' />
             ) : null}
             <ConfigurationAccordion

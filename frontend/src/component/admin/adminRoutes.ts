@@ -28,7 +28,6 @@ export const adminRoutes: INavigationMenuItem[] = [
         title: 'Groups',
         menu: {
             adminSettings: true,
-            mode: ['enterprise'],
         },
         group: 'users',
     },
@@ -37,7 +36,6 @@ export const adminRoutes: INavigationMenuItem[] = [
         title: 'Root roles',
         menu: {
             adminSettings: true,
-            mode: ['enterprise'],
         },
         group: 'users',
     },
@@ -46,7 +44,6 @@ export const adminRoutes: INavigationMenuItem[] = [
         title: 'Project roles',
         menu: {
             adminSettings: true,
-            mode: ['enterprise'],
         },
         group: 'users',
     },
@@ -55,7 +52,6 @@ export const adminRoutes: INavigationMenuItem[] = [
         title: 'Login history',
         menu: {
             adminSettings: true,
-            mode: ['enterprise'],
         },
         group: 'users',
     },
@@ -66,7 +62,6 @@ export const adminRoutes: INavigationMenuItem[] = [
         title: 'Service accounts',
         menu: {
             adminSettings: true,
-            mode: ['enterprise'],
         },
     },
 
@@ -88,32 +83,32 @@ export const adminRoutes: INavigationMenuItem[] = [
     {
         path: '/admin/auth/oidc',
         title: 'Open ID Connect',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         group: 'sso',
     },
     {
         path: '/admin/auth/saml',
         title: 'SAML 2.0',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         group: 'sso',
     },
     {
         path: '/admin/auth/password',
         title: 'Password login',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         group: 'sso',
     },
     {
         path: '/admin/auth/google',
         title: 'Google',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         flag: 'googleAuthEnabled',
         group: 'sso',
     },
     {
         path: '/admin/auth/scim',
         title: 'SCIM',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         group: 'sso',
     },
 
@@ -121,40 +116,40 @@ export const adminRoutes: INavigationMenuItem[] = [
     {
         path: '/admin/enterprise-edge',
         title: 'Enterprise Edge',
-        menu: { adminSettings: true, mode: ['pro', 'enterprise'] },
+        menu: { adminSettings: true },
     },
 
     // Network
     {
         path: '/admin/network',
         title: 'Overview',
-        menu: { adminSettings: true, mode: ['pro', 'enterprise'] },
+        menu: { adminSettings: true },
         group: 'network',
     },
     {
         path: '/admin/network/traffic',
         title: 'Traffic',
-        menu: { adminSettings: true, mode: ['pro', 'enterprise'] },
+        menu: { adminSettings: true },
         group: 'network',
     },
     {
         path: '/admin/network/backend-connections',
         title: 'Backend connections',
-        menu: { adminSettings: true, mode: ['pro', 'enterprise'] },
+        menu: { adminSettings: true },
         group: 'network',
         flag: 'consumptionModelUI',
     },
     {
         path: '/admin/network/frontend-data-usage',
         title: 'Frontend data usage',
-        menu: { adminSettings: true, mode: ['pro', 'enterprise'] },
+        menu: { adminSettings: true },
         group: 'network',
         flag: 'consumptionModelUI',
     },
     {
         path: '/admin/network/data-usage',
         title: 'Data usage',
-        menu: { adminSettings: true, mode: ['pro', 'enterprise'] },
+        menu: { adminSettings: true },
         group: 'network',
         notFlag: 'consumptionModelUI',
     },
@@ -169,13 +164,13 @@ export const adminRoutes: INavigationMenuItem[] = [
     {
         path: '/admin/banners',
         title: 'Banners',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         group: 'instance',
     },
     {
         path: '/admin/license',
         title: 'License',
-        menu: { adminSettings: true, mode: ['enterprise'] },
+        menu: { adminSettings: true },
         flag: 'enableLicense',
         group: 'instance',
     },

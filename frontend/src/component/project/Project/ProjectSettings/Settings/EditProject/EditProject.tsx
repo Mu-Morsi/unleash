@@ -45,10 +45,8 @@ const EditProject = () => {
             {accessDeniedAlert}
             <StyledFormContainer>
                 <UpdateProject project={project} />
-                <ConditionallyRender
-                    condition={isEnterprise()}
-                    show={<UpdateEnterpriseSettings project={project} />}
-                />
+                {/* INGKA Fork: Always show enterprise settings in OSS */}
+                <UpdateEnterpriseSettings project={project} />
                 <ArchiveProjectForm
                     featureCount={featuresCount(project) ?? 0}
                 />

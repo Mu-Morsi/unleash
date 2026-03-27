@@ -21,7 +21,7 @@ import {
 import NameExistsError from '../../error/name-exists-error.js';
 import { sortOrderSchema } from '../../services/sort-order-schema.js';
 import NotFoundError from '../../error/notfound-error.js';
-import type { IProjectStore } from '../../features/project/project-store-type.js';
+import type { IProjectStore } from '../project/project-store-type.js';
 import type { IFlagResolver } from '../../types/experimental.js';
 import type { CreateFeatureStrategySchema } from '../../openapi/index.js';
 import type EventService from '../events/event-service.js';

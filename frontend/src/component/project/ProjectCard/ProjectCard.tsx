@@ -5,7 +5,7 @@ import {
     StyledProjectCardHeader,
     StyledProjectCardContent,
     StyledProjectCardTitleContainer,
-} from './ProjectCard.styles';
+} from './ProjectCard.styles.ts';
 import { ProjectCardFooter } from './ProjectCardFooter/ProjectCardFooter.tsx';
 import { ProjectModeBadge } from './ProjectModeBadge/ProjectModeBadge.tsx';
 import { FavoriteAction } from './FavoriteAction/FavoriteAction.tsx';

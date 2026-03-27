@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import type { TableState } from '../ChangeRequests.types';
-import { makeStyledChip, Wrapper } from './ChangeRequestFilters.styles';
+import type { TableState } from '../ChangeRequests.types.tsx';
+import { makeStyledChip, Wrapper } from './ChangeRequestFilters.styles.tsx';
 import { UserFilterChips } from './UserFilterChips.tsx';
 import { StateFilterChips } from './StateFilterChips.tsx';
 import type { ChangeRequestFiltersProps } from './ChangeRequestFilters.types.ts';

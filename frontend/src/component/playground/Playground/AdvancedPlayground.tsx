@@ -14,7 +14,7 @@ import {
     resolveEnvironments,
     resolveProjects,
     resolveResultsWidth,
-} from './playground.utils';
+} from './playground.utils.ts';
 import { PlaygroundGuidance } from './PlaygroundGuidance/PlaygroundGuidance.tsx';
 import { PlaygroundGuidancePopper } from './PlaygroundGuidancePopper/PlaygroundGuidancePopper.tsx';
 import Loader from 'component/common/Loader/Loader';

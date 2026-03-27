@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Box, Typography } from '@mui/material';
-import type { ChangeRequestType } from '../changeRequest.types';
+import type { ChangeRequestType } from '../changeRequest.types.ts';
 import { FeatureToggleChanges } from './Changes/FeatureToggleChanges.tsx';
 import { FeatureChange } from './Changes/Change/FeatureChange.tsx';
 import { ChangeActions } from './Changes/Change/ChangeActions.tsx';

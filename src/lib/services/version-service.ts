@@ -159,7 +159,8 @@ export default class VersionService {
                     }
                 }
                 if (this.versionCheckUrl) {
-                    const res = await ky.post(this.versionCheckUrl, {
+                    // Non-null assertion safe here due to if-check above
+                    const res = await ky.post(this.versionCheckUrl!, {
                         json: versionPayload,
                         headers: { 'Content-Type': 'application/json' },
                     });

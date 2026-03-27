@@ -1,4 +1,4 @@
-import { SYSTEM_USER, SYSTEM_USER_AUDIT } from '../../lib/types/index.js';
+import { SYSTEM_USER, SYSTEM_USER_AUDIT } from '../types/index.js';
 import type { IApiUser, IAuditUser, IUser } from '../types/index.js';
 import type { IApiRequest, IAuthRequest } from '../routes/unleash-types.js';
 

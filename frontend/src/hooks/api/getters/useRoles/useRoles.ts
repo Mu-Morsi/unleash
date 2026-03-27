@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import {
     PROJECT_ROLE_TYPES,
     ROOT_ROLE_TYPES,
@@ -19,10 +18,9 @@ interface IUseRolesOutput {
 }
 
 export const useRoles = (): IUseRolesOutput => {
-    const { isEnterprise } = useUiConfig();
-
+    // INGKA Fork: Removed isEnterprise() check to enable roles for all users
     const { data, error, mutate } = useConditionalSWR(
-        isEnterprise(),
+        true, // Always fetch roles - enterprise restriction removed
         { roles: [], projectRoles: [] },
         formatApiPath(`api/admin/roles`),
         fetcher,

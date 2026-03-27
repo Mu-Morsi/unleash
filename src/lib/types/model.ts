@@ -725,3 +725,27 @@ export interface EnvironmentRevisionId {
     revisionId: number;
     projects?: string[];
 }
+
+// INGKA Fork: Service account interfaces for OSS support
+export interface IServiceAccount {
+    id: number;
+    name: string;
+    username: string;
+    rootRole: number;
+    createdAt: Date;
+    seenAt?: Date | null;
+    imageUrl?: string | null;
+    tokens: unknown[]; // PatSchema from openapi - uses serialized dates
+}
+
+export interface ICreateServiceAccount {
+    name: string;
+    username: string;
+    rootRole: number;
+}
+
+export interface IUpdateServiceAccount {
+    name?: string;
+    rootRole?: number;
+}
+}

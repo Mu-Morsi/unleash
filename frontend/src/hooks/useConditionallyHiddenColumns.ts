@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 interface IConditionallyHiddenColumns {
     condition: boolean;
@@ -12,6 +12,12 @@ export const useConditionallyHiddenColumns = (
     ) => void,
     columnsDefinition: unknown[],
 ) => {
+    // INGKA Fork: Serialize columnsDefinition to avoid infinite loop when array reference changes
+    const columnsDefinitionKey = useMemo(
+        () => JSON.stringify(columnsDefinition.map((c) => (c as { id?: string })?.id)),
+        [columnsDefinition],
+    );
+
     useEffect(() => {
         const columnsToHide = conditionallyHiddenColumns
             .filter(({ condition }) => condition)
@@ -31,6 +37,6 @@ export const useConditionallyHiddenColumns = (
     }, [
         ...conditionallyHiddenColumns.map(({ condition }) => condition),
         setHiddenColumns,
-        columnsDefinition,
+        columnsDefinitionKey,
     ]);
 };

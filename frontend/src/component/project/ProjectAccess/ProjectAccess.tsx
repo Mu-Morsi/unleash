@@ -18,19 +18,8 @@ export const ProjectAccess = () => {
     const projectId = useRequiredPathParam('projectId');
     const projectName = useProjectOverviewNameOrId(projectId);
     const { hasAccess } = useContext(AccessContext);
-    const { isOss } = useUiConfig();
+    // INGKA Fork: Removed isOss() check to enable project access in OSS
     usePageTitle(`Project access – ${projectName}`);
-
-    if (isOss()) {
-        return (
-            <PageContent
-                header={<PageHeader title='User access' />}
-                sx={{ justifyContent: 'center' }}
-            >
-                <PremiumFeature feature='access' />
-            </PageContent>
-        );
-    }
 
     if (!hasAccess([UPDATE_PROJECT, PROJECT_USER_ACCESS_READ], projectId)) {
         return (

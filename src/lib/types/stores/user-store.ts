@@ -51,4 +51,8 @@ export interface IUserStore extends Store<IUser, number> {
     countRecentlyDeleted(): Promise<number>;
     countServiceAccounts(): Promise<number>;
     deleteScimUsers(): Promise<IUser[]>;
+    // INGKA Fork: Service Account methods for OSS support
+    getAllServiceAccounts(): Promise<IUser[]>;
+    insertServiceAccount(user: ICreateUser): Promise<IUser>;
+    getById(id: number): Promise<IUser>;
 }

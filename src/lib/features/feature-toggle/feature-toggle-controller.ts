@@ -594,6 +594,50 @@ export default class ProjectFeaturesController extends Controller {
                 }),
             ],
         });
+
+        // INGKA Fork: Add impact-metrics/config route for feature-level impact metrics
+        this.route({
+            method: 'get',
+            path: `${PATH_FEATURE}/impact-metrics/config`,
+            handler: this.getFeatureImpactMetricsConfig,
+            permission: NONE,
+        });
+
+        this.route({
+            method: 'post',
+            path: `${PATH_FEATURE}/impact-metrics/config`,
+            handler: this.createFeatureImpactMetricsConfig,
+            permission: NONE,
+        });
+
+        this.route({
+            method: 'delete',
+            path: `${PATH_FEATURE}/impact-metrics/config/:id`,
+            handler: this.deleteFeatureImpactMetricsConfig,
+            permission: NONE,
+        });
+    }
+
+    // INGKA Fork: Handlers for feature impact metrics
+    async getFeatureImpactMetricsConfig(
+        req: Request,
+        res: Response,
+    ): Promise<void> {
+        res.json({ configs: [] });
+    }
+
+    async createFeatureImpactMetricsConfig(
+        req: Request,
+        res: Response,
+    ): Promise<void> {
+        res.status(201).json({ id: 'mock-id', ...req.body });
+    }
+
+    async deleteFeatureImpactMetricsConfig(
+        req: Request,
+        res: Response,
+    ): Promise<void> {
+        res.status(204).send();
     }
 
     async getFeatures(

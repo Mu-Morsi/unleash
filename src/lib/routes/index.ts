@@ -16,6 +16,7 @@ import { PublicInviteController } from './public-invite.js';
 import type { Db } from '../db/db.js';
 import { minutesToMilliseconds } from 'date-fns';
 import type { IUnleashServices } from '../services/index.js';
+import InstanceController from './instance.js';
 
 class IndexRouter extends Controller {
     constructor(
@@ -68,6 +69,8 @@ class IndexRouter extends Controller {
         );
 
         this.use('/edge', new EdgeController(config, services).router);
+
+        this.use('/api/instance', new InstanceController(config, services).router);
     }
 }
 

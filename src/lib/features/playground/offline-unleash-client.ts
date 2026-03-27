@@ -3,7 +3,7 @@ import {
     InMemStorageProvider,
     FeatureEvaluator,
 } from './feature-evaluator/index.js';
-import type { FeatureConfigurationClient } from '../../features/feature-toggle/types/feature-toggle-strategies-store-type.js';
+import type { FeatureConfigurationClient } from '../feature-toggle/types/feature-toggle-strategies-store-type.js';
 import type { Segment } from './feature-evaluator/strategy/strategy.js';
 import type { ISegment } from '../../types/model.js';
 import { serializeDates } from '../../types/serialize-dates.js';

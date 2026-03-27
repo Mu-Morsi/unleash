@@ -31,14 +31,12 @@ const StyledBadgeContainer = styled(Box)({
 
 export const ProjectSettings = () => {
     const location = useLocation();
-    const { isPro, isEnterprise } = useUiConfig();
     const navigate = useNavigate();
 
     const actionsEnabled = useUiFlag('automatedActions');
     const contextFieldsEnabled = useUiFlag('projectContextFields');
 
-    const paidTabs = (...tabs: ITab[]) =>
-        isPro() || isEnterprise() ? tabs : [];
+    const paidTabs = (...tabs: ITab[]) => tabs;
 
     const tabs: ITab[] = [
         ...paidTabs(
@@ -78,11 +76,6 @@ export const ProjectSettings = () => {
         ...paidTabs({
             id: 'change-requests',
             label: 'Change request configuration',
-            endIcon: isPro() ? (
-                <StyledBadgeContainer>
-                    <EnterpriseBadge />
-                </StyledBadgeContainer>
-            ) : undefined,
         }),
     ];
 
@@ -90,11 +83,6 @@ export const ProjectSettings = () => {
         tabs.push({
             id: 'actions',
             label: 'Actions',
-            endIcon: isPro() ? (
-                <StyledBadgeContainer>
-                    <EnterpriseBadge />
-                </StyledBadgeContainer>
-            ) : undefined,
         });
     }
 

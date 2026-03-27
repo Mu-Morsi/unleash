@@ -1,5 +1,5 @@
 import Input from 'component/common/Input/Input';
-import { TextField, Button, styled, Typography } from '@mui/material';
+import { TextField, Button, styled, Box } from '@mui/material';
 import { TagTypeColorPicker } from './TagTypeColorPicker.tsx';
 import type React from 'react';
 import { trim } from 'component/common/util';
@@ -100,13 +100,13 @@ const TagTypeForm: React.FC<ITagTypeForm> = ({
                     onChange={(e) => setTagDesc(e.target.value)}
                 />
 
-                <Typography variant='body2'>
+                <Box sx={{ typography: 'body2' }}>
                     Tag color
                     <TagTypeColorPicker
                         selectedColor={color}
                         onChange={setColor}
                     />
-                </Typography>
+                </Box>
             </StyledContainer>
             <StyledButtonContainer>
                 {children}

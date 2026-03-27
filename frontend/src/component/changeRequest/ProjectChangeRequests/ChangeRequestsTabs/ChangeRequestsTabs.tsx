@@ -27,7 +27,7 @@ import { AvatarCell } from './AvatarCell.tsx';
 import { ChangeRequestTitleCell } from './ChangeRequestTitleCell.tsx';
 import { createLocalStorage } from 'utils/createLocalStorage';
 import { useConditionallyHiddenColumns } from 'hooks/useConditionallyHiddenColumns';
-import { useStyles } from './ChangeRequestsTabs.styles';
+import { useStyles } from './ChangeRequestsTabs.styles.ts';
 import { FeaturesCell } from './FeaturesCell.tsx';
 import { HighlightCell } from '../../../common/Table/cells/HighlightCell/HighlightCell.tsx';
 

@@ -5,7 +5,7 @@ import {
     StringParam,
     withDefault,
 } from 'use-query-params';
-import { sortKeys } from '../ProjectsListSort/ProjectsListSort.jsx';
+import { sortKeys } from '../ProjectsListSort/ProjectsListSort.js';
 
 export type ProjectsListView = 'cards' | 'list';
 

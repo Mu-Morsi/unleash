@@ -3,7 +3,7 @@ import { SidebarModal } from 'component/common/SidebarModal/SidebarModal';
 import { useEffect, useState } from 'react';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 import { ImportTimeline } from './ImportTimeline.tsx';
-import type { StageName } from './StageName.tsx';
+import type { StageName } from './StageName.ts';
 import {
     Actions,
     ConfigurationStage,

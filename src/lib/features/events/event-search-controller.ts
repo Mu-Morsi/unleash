@@ -1,11 +1,11 @@
 import type { Response } from 'express';
 import type { IUnleashConfig } from '../../types/option.js';
 import type { IUnleashServices } from '../../services/index.js';
-import type EventService from '../../features/events/event-service.js';
+import type EventService from './event-service.js';
 import { NONE } from '../../types/permissions.js';
 import type { OpenApiService } from '../../services/openapi-service.js';
 import { createResponseSchema } from '../../openapi/util/create-response-schema.js';
-import { serializeDates } from '../../../lib/types/serialize-dates.js';
+import { serializeDates } from '../../types/serialize-dates.js';
 import type { IFlagResolver } from '../../types/experimental.js';
 import {
     type EventSearchQueryParameters,

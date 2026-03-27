@@ -22,6 +22,7 @@ import { ReactComponent as LogoOnly } from 'assets/img/logoDark.svg';
 import { Link } from 'react-router-dom';
 import { useFlag } from '@unleash/proxy-client-react';
 import { useNewAdminMenu } from 'hooks/useNewAdminMenu';
+import { TaktBranding } from './TaktBranding.tsx';
 
 export const StretchContainer = styled(Box, {
     shouldForwardProp: (propName) =>
@@ -133,6 +134,7 @@ export const NavigationSidebar: FC<{
                     condition={mode === 'full'}
                     show={
                         <StyledLink to='/' sx={flexRow} aria-label='Home'>
+                            <TaktBranding>
                             <ThemeMode
                                 darkmode={
                                     <ConditionallyRender
@@ -153,6 +155,7 @@ export const NavigationSidebar: FC<{
                                     />
                                 }
                             />
+                            </TaktBranding>
                         </StyledLink>
                     }
                     elseShow={

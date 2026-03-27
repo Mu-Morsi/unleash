@@ -1,6 +1,6 @@
 import { useTheme } from '@mui/material';
 import { useMemo } from 'react';
-import { fillGradientPrimary } from '../components/LineChart/LineChart.jsx';
+import { fillGradientPrimary } from '../components/LineChart/LineChart.js';
 import type { ChartData } from 'chart.js';
 
 type PlaceholderDataOptions = {

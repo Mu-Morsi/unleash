@@ -15,7 +15,7 @@ import type { FeatureVariantsSchema } from '../../../openapi/spec/feature-varian
 import { createRequestSchema } from '../../../openapi/util/create-request-schema.js';
 import { createResponseSchema } from '../../../openapi/util/create-response-schema.js';
 import type { AccessService } from '../../../services/index.js';
-import { BadDataError, PermissionError } from '../../../../lib/error/index.js';
+import { BadDataError, PermissionError } from '../../../error/index.js';
 import type { IUser } from '../../../types/index.js';
 import type { PushVariantsSchema } from '../../../openapi/spec/push-variants-schema.js';
 import { getStandardResponses } from '../../../openapi/index.js';

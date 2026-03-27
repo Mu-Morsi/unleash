@@ -417,22 +417,21 @@ export default class ProjectService {
             }),
         );
 
-        if (this.isEnterprise) {
-            if (newProject.changeRequestEnvironments) {
-                await this.validateEnvironmentsExist(
-                    newProject.changeRequestEnvironments.map((env) => env.name),
+        // INGKA Fork: Removed isEnterprise check to enable change requests in OSS
+        if (newProject.changeRequestEnvironments) {
+            await this.validateEnvironmentsExist(
+                newProject.changeRequestEnvironments.map((env) => env.name),
+            );
+            const allChangeRequestEnvironments =
+                await this.getAllChangeRequestEnvironments(newProject);
+            const changeRequestEnvironments =
+                await enableChangeRequestsForSpecifiedEnvironments(
+                    allChangeRequestEnvironments,
                 );
-                const allChangeRequestEnvironments =
-                    await this.getAllChangeRequestEnvironments(newProject);
-                const changeRequestEnvironments =
-                    await enableChangeRequestsForSpecifiedEnvironments(
-                        allChangeRequestEnvironments,
-                    );
 
-                data.changeRequestEnvironments = changeRequestEnvironments;
-            } else {
-                data.changeRequestEnvironments = [];
-            }
+            data.changeRequestEnvironments = changeRequestEnvironments;
+        } else {
+            data.changeRequestEnvironments = [];
         }
 
         await this.accessService.createDefaultProjectRoles(user, data.id);
@@ -1369,10 +1368,7 @@ export default class ProjectService {
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     removePropertiesForNonEnterprise(data): any {
-        if (this.isEnterprise) {
-            return data;
-        }
-        const { mode, changeRequestEnvironments, ...proData } = data;
-        return proData;
+        // INGKA Fork: Always return full data including mode and changeRequestEnvironments
+        return data;
     }
 }

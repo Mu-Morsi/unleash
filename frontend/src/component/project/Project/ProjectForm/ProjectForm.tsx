@@ -225,7 +225,7 @@ const ProjectForm: React.FC<IProjectForm> = ({
                 )}
             />
             <ConditionallyRender
-                condition={mode === 'Create' && isEnterprise()}
+                condition={mode === 'Create'}
                 show={
                     <>
                         <Box

@@ -1,6 +1,6 @@
 import type { Theme } from '@mui/material';
 import type { ILocationSettings } from 'hooks/useLocationSettings';
-import type { TooltipState } from './ChartTooltip/ChartTooltip.jsx';
+import type { TooltipState } from './ChartTooltip/ChartTooltip.js';
 import { createTooltip } from './createTooltip.js';
 import { legendOptions } from './legendOptions.js';
 import type { ChartOptions } from 'chart.js';

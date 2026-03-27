@@ -3,7 +3,7 @@ import { Box, Typography, styled } from '@mui/material';
 import type { AddonTypeSchema } from 'openapi';
 import { IntegrationCard } from '../IntegrationCard/IntegrationCard.tsx';
 import { JIRA_INFO } from '../../ViewIntegration/JiraIntegration/JiraIntegration.tsx';
-import { StyledCardsGrid } from '../IntegrationList.styles';
+import { StyledCardsGrid } from '../IntegrationList.styles.tsx';
 import { RequestIntegrationCard } from '../RequestIntegrationCard/RequestIntegrationCard.tsx';
 import { OFFICIAL_SDKS } from './SDKs.ts';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
@@ -99,7 +99,7 @@ export const AvailableIntegrations: VFC<IAvailableIntegrationsProps> = ({
                             ),
                         )}
                     <ConditionallyRender
-                        condition={isEnterprise() && signalsEnabled}
+                        condition={signalsEnabled}
                         show={
                             <IntegrationCard
                                 icon='signals'

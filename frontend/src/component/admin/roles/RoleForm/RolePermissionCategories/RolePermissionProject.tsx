@@ -38,12 +38,13 @@ export const RolePermissionProject = ({
     return (
         <StyledGrid>
             {permissionsStructure.map((category) => (
-                <div>
+                <div key={category.label}>
                     <StyledSectionTitle>{category.label}</StyledSectionTitle>
                     <div>
                         {category.permissions.map(
                             ([permission, parentPermission]) => (
                                 <RolePermissionProjectItem
+                                    key={permission.name}
                                     permission={permission}
                                     onChange={() =>
                                         onPermissionChange(permission)

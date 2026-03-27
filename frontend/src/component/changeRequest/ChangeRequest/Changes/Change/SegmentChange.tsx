@@ -4,7 +4,7 @@ import { Box, Card, Typography, Link } from '@mui/material';
 import type {
     ChangeRequestState,
     ISegmentChange,
-} from '../../../changeRequest.types';
+} from '../../../changeRequest.types.ts';
 import { SegmentChangeDetails } from './SegmentChangeDetails.tsx';
 import { ConflictWarning } from './ConflictWarning.tsx';
 import { useSegment } from 'hooks/api/getters/useSegment/useSegment.ts';

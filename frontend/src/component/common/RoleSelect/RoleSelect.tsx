@@ -35,16 +35,19 @@ export const RoleSelect = ({
     ...rest
 }: IRoleSelectProps) => {
     const renderRoleOption = (
-        props: React.HTMLAttributes<HTMLLIElement>,
+        props: React.HTMLAttributes<HTMLLIElement> & { key?: React.Key },
         option: IRole,
-    ) => (
-        <li {...props}>
-            <StyledRoleOption>
-                <span>{option.name}</span>
-                <span>{option.description}</span>
-            </StyledRoleOption>
-        </li>
-    );
+    ) => {
+        const { key, ...restProps } = props;
+        return (
+            <li key={key} {...restProps}>
+                <StyledRoleOption>
+                    <span>{option.name}</span>
+                    <span>{option.description}</span>
+                </StyledRoleOption>
+            </li>
+        );
+    };
 
     return (
         <>

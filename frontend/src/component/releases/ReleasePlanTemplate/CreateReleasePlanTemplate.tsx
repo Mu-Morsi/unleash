@@ -93,9 +93,7 @@ export const CreateReleasePlanTemplate = () => {
     --header 'Content-Type: application/json' \\
     --data-raw '${JSON.stringify(getTemplatePayload(), undefined, 2)}'`;
 
-    if (!isEnterprise()) {
-        return null;
-    }
+    // INGKA Fork: Removed isEnterprise() check to enable release templates in OSS
 
     return (
         <TemplateForm

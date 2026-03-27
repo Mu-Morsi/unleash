@@ -1,6 +1,6 @@
-import dbInit, { type ITestDb } from '../../test/e2e/helpers/database-init.js';
+import dbInit, { type ITestDb } from './helpers/database-init.js';
 
-import getLogger from '../../test/fixtures/no-logger.js';
+import getLogger from '../fixtures/no-logger.js';
 
 import { log } from 'db-migrate-shared';
 import postgresPkg from 'pg';

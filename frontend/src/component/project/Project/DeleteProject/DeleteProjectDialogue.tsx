@@ -67,7 +67,7 @@ export const DeleteProjectDialogue = ({
                     <li>all feature flags archived in it</li>
                     <li>all API keys scoped only to this project</li>
                     <ConditionallyRender
-                        condition={isEnterprise() && automatedActionsEnabled}
+                        condition={automatedActionsEnabled}
                         show={<li>all actions configured for it</li>}
                     />
                 </ul>

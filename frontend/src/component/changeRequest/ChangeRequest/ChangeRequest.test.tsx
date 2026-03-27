@@ -8,7 +8,7 @@ import type {
     ChangeRequestType,
     IChangeRequestAddStrategy,
     IChangeRequestEnabled,
-} from '../changeRequest.types';
+} from '../changeRequest.types.ts';
 import { testServerRoute, testServerSetup } from 'utils/testServer';
 import type { StrategyVariantSchema } from 'openapi';
 

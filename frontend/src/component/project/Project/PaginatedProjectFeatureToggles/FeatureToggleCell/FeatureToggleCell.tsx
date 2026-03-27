@@ -4,7 +4,7 @@ import { flexRow } from 'themes/themeStyles';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 import VariantsWarningTooltip from 'component/feature/FeatureView/FeatureVariants/VariantsTooltipWarning';
 import { FeatureToggleSwitch } from '../../ProjectFeatureToggles/FeatureToggleSwitch/FeatureToggleSwitch.tsx';
-import type { UseFeatureToggleSwitchType } from '../../ProjectFeatureToggles/FeatureToggleSwitch/FeatureToggleSwitch.types';
+import type { UseFeatureToggleSwitchType } from '../../ProjectFeatureToggles/FeatureToggleSwitch/FeatureToggleSwitch.types.ts';
 import type { FeatureEnvironmentSchema } from 'openapi';
 
 const StyledSwitchContainer = styled('div', {

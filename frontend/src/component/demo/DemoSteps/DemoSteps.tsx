@@ -4,7 +4,7 @@ import Joyride, {
     type TooltipRenderProps,
 } from 'react-joyride';
 import { useTheme } from '@mui/material';
-import type { ITutorialTopic, ITutorialTopicStep } from '../demo-topics.ts';
+import type { ITutorialTopic, ITutorialTopicStep } from '../demo-topics.tsx';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { DemoStepTooltip } from './DemoStepTooltip/DemoStepTooltip.tsx';

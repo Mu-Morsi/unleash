@@ -88,9 +88,8 @@ export class SegmentService implements ISegmentService {
     }
 
     async getAll(userId?: number): Promise<ISegment[]> {
-        const segments = await this.segmentStore.getAll(
-            this.config.isEnterprise,
-        );
+        // INGKA Fork: Always pass true to include change request data in OSS
+        const segments = await this.segmentStore.getAll(true);
 
         if (!userId) {
             return segments;
@@ -163,16 +162,13 @@ export class SegmentService implements ISegmentService {
         const strategies =
             await this.featureStrategiesStore.getStrategiesBySegment(id);
 
-        if (this.config.isEnterprise) {
-            const changeRequestStrategies =
-                await this.changeRequestSegmentUsageReadModel.getStrategiesUsedInActiveChangeRequests(
-                    id,
-                );
+        // INGKA Fork: Removed isEnterprise check - always include change request strategies in OSS
+        const changeRequestStrategies =
+            await this.changeRequestSegmentUsageReadModel.getStrategiesUsedInActiveChangeRequests(
+                id,
+            );
 
-            return { strategies, changeRequestStrategies };
-        }
-
-        return { strategies, changeRequestStrategies: [] };
+        return { strategies, changeRequestStrategies };
     }
 
     async isInUse(id: number): Promise<boolean> {

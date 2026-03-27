@@ -4,6 +4,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LanguageIcon from '@mui/icons-material/Language';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import CodeIcon from '@mui/icons-material/Code';
+import PublicIcon from '@mui/icons-material/Public';
 import { ReactComponent as RolloutIcon } from 'assets/icons/rollout.svg';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 
@@ -27,6 +28,8 @@ export const getFeatureStrategyIcon = (strategyName?: string) => {
             return LanguageIcon;
         case 'flexibleRollout':
             return RolloutSvgIcon;
+        case 'retailUnitRollout':
+            return PublicIcon;
         case 'applicationHostname':
             return LocationOnIcon;
         case 'releasePlanTemplate':
@@ -58,6 +61,7 @@ export const formattedStrategyNames: Record<string, string> = {
     applicationHostname: 'Hosts',
     default: 'Standard',
     flexibleRollout: 'Gradual rollout',
+    retailUnitRollout: 'Retail unit rollout',
     gradualRolloutRandom: 'Randomized',
     gradualRolloutSessionId: 'Sessions',
     gradualRolloutUserId: 'Users',

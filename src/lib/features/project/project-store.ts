@@ -19,7 +19,7 @@ import type {
     IProjectStore,
     ProjectEnvironment,
     IProjectApplicationsSearchParams,
-} from '../../features/project/project-store-type.js';
+} from './project-store-type.js';
 import { DEFAULT_ENV } from '../../util/index.js';
 import metricsHelper from '../../util/metrics-helper.js';
 import { DB_TIME } from '../../metric-events.js';
@@ -136,9 +136,8 @@ class ProjectStore implements IProjectStore {
             .orderBy('name', 'asc');
 
         projects = projects.where(`${TABLE}.archived_at`, null);
-        if (this.isOss) {
-            projects = projects.where('id', 'default');
-        }
+        // INGKA Fork: OSS restriction removed - show all projects
+        // Original: if (this.isOss) { projects = projects.where('id', 'default'); }
 
         const rows = await projects;
         stop();

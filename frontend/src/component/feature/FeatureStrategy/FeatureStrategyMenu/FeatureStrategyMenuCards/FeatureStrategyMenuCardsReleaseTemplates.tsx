@@ -99,17 +99,13 @@ export const FeatureStrategyMenuCardsReleaseTemplates = ({
     filter,
     setFilter,
 }: IFeatureStrategyMenuCardsReleaseTemplatesProps) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable release templates in OSS
     const { templates } = useReleasePlanTemplates();
     const { trackEvent } = usePlausibleTracker();
     const canCreateTemplate = useHasRootAccess(RELEASE_PLAN_TEMPLATE_CREATE);
 
     const [noAccessDialogOpen, setNoAccessDialogOpen] =
         useState<boolean>(false);
-
-    if (!isEnterprise()) {
-        return null;
-    }
 
     const isFiltered = filter === 'releaseTemplates';
     const shouldShowHeader = !isFiltered || templates.length > 0;

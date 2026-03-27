@@ -8,7 +8,7 @@ import {
     Typography,
     useTheme,
 } from '@mui/material';
-import type { ChangeRequestType } from '../../changeRequest.types';
+import type { ChangeRequestType } from '../../changeRequest.types.ts';
 import { Link } from 'react-router-dom';
 import { ChangeRequestStatusBadge } from '../../ChangeRequestStatusBadge/ChangeRequestStatusBadge.tsx';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';

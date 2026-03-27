@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
@@ -10,10 +9,10 @@ const ENDPOINT = 'api/admin/release-plan-templates';
 const DEFAULT_DATA: IReleasePlanTemplate[] = [];
 
 export const useReleasePlanTemplates = () => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable release templates in OSS
 
     const { data, error, mutate } = useConditionalSWR<IReleasePlanTemplate[]>(
-        isEnterprise(),
+        true,
         DEFAULT_DATA,
         formatApiPath(ENDPOINT),
         fetcher,

@@ -6,7 +6,7 @@ import type {
 } from 'openapi';
 import { ConstraintExecution } from './ConstraintExecution/ConstraintExecution.tsx';
 import { formattedStrategyNames } from 'utils/strategyNames';
-import { StyledBoxSummary } from './StrategyExecution.styles';
+import { StyledBoxSummary } from './StrategyExecution.styles.tsx';
 import { Badge } from 'component/common/Badge/Badge';
 import {
     ConstraintListItem,

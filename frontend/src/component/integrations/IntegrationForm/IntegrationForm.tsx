@@ -45,7 +45,7 @@ import {
     StyledConfigurationSection,
     StyledTitle,
     StyledRaisedSection,
-} from './IntegrationForm.styles';
+} from './IntegrationForm.styles.tsx';
 import { GO_BACK } from 'constants/navigate';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 import { IntegrationDelete } from './IntegrationDelete/IntegrationDelete.tsx';

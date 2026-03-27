@@ -11,13 +11,13 @@ import { createResponseSchema } from '../../openapi/util/create-response-schema.
 import {
     eventsSchema,
     type EventsSchema,
-} from '../../../lib/openapi/spec/events-schema.js';
-import { serializeDates } from '../../../lib/types/serialize-dates.js';
+} from '../../openapi/spec/events-schema.js';
+import { serializeDates } from '../../types/serialize-dates.js';
 import {
     featureEventsSchema,
     type FeatureEventsSchema,
-} from '../../../lib/openapi/spec/feature-events-schema.js';
-import { getStandardResponses } from '../../../lib/openapi/util/standard-responses.js';
+} from '../../openapi/spec/feature-events-schema.js';
+import { getStandardResponses } from '../../openapi/util/standard-responses.js';
 import type { IFlagResolver } from '../../types/experimental.js';
 import type { IAuthRequest } from '../unleash-types.js';
 import {

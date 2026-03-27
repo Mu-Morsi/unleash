@@ -5,7 +5,7 @@ import {
 import { Box, styled } from '@mui/material';
 import PercentageCircle from 'component/common/PercentageCircle/PercentageCircle';
 import { PlaygroundParameterItem } from '../PlaygroundParameterItem/PlaygroundParameterItem.tsx';
-import { StyledBoxSummary } from '../StrategyExecution.styles';
+import { StyledBoxSummary } from '../StrategyExecution.styles.tsx';
 import type {
     PlaygroundConstraintSchema,
     PlaygroundRequestSchema,

@@ -5,13 +5,13 @@ export const defaultValue: IUiConfig = {
     version: '7.3.0',
     slogan: 'The enterprise ready feature flag service.',
     flags: {
-        P: false,
-        RE: false,
-        EEA: false,
-        SE: false,
-        T: false,
+        P: true,
+        RE: true,
+        EEA: true,
+        SE: true,
+        T: true,
         UNLEASH_CLOUD: false,
-        UG: false,
+        UG: true,
     },
     links: [
         {
@@ -38,7 +38,7 @@ export const defaultValue: IUiConfig = {
         actionSetFilterValues: 25,
         signalTokensPerEndpoint: 5,
         featureEnvironmentStrategies: 30,
-        environments: 50,
+        environments: 999999,
         constraintValues: 250,
         constraints: 30,
         projects: 500,

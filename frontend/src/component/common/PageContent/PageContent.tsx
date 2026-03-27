@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react';
 import classnames from 'classnames';
 import { PageHeader } from 'component/common/PageHeader/PageHeader';
 import { Paper, type PaperProps, styled } from '@mui/material';
-import { useStyles } from './PageContent.styles';
+import { useStyles } from './PageContent.styles.ts';
 import useLoading from 'hooks/useLoading';
 import { ConditionallyRender } from '../ConditionallyRender/ConditionallyRender.tsx';
 

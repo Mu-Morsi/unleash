@@ -20,7 +20,8 @@ const useUiConfig = (): IUseUIConfigOutput => {
     const { data, error, mutate } = useSWR<IUiConfig>(path, fetcher);
 
     const isOss = useCallback(() => {
-        return !data?.versionInfo?.current?.enterprise;
+        // INGKA Fork: Always return false (unlimited projects/environments)
+        return false;
     }, [data]);
 
     const isPro = useCallback(() => {

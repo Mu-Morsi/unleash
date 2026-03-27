@@ -10,7 +10,7 @@ import {
     StyledInnerContainer,
     StyledAvatar,
     StyledCard,
-} from './ChangeRequestHeader.styles';
+} from './ChangeRequestHeader.styles.tsx';
 import { Separator } from '../../ChangeRequestSidebar/ChangeRequestSidebar.tsx';
 import { ChangeRequestTitle } from '../../ChangeRequestSidebar/EnvironmentChangeRequest/ChangeRequestTitle.tsx';
 import { UpdateCount } from 'component/changeRequest/UpdateCount';

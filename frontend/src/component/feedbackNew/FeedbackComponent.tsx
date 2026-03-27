@@ -18,7 +18,7 @@ import { useUserFeedbackApi } from 'hooks/api/actions/useUserFeedbackApi/useUser
 import { useUserSubmittedFeedback } from 'hooks/useSubmittedFeedback';
 import type { IToast } from 'interfaces/toast';
 import { useTheme } from '@mui/material/styles';
-import type { FeedbackData, FeedbackMode } from './FeedbackContext.tsx';
+import type { FeedbackData, FeedbackMode } from './FeedbackContext.ts';
 import { usePlausibleTracker } from 'hooks/usePlausibleTracker';
 import { useUiFlag } from 'hooks/useUiFlag';
 import useUserType from './useUserType.ts';

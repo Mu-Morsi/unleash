@@ -23,7 +23,12 @@ import {
     type ProjectsSchema,
     projectsSchema,
 } from '../../openapi/index.js';
-import { getStandardResponses } from '../../openapi/util/standard-responses.js';
+import {
+    emptyResponse,
+    getStandardResponses,
+} from '../../openapi/util/standard-responses.js';
+// INGKA Fork: Import for OpenAPI request schema
+import { createRequestSchema } from '../../openapi/util/create-request-schema.js';
 import type { IUnleashServices, OpenApiService } from '../../services/index.js';
 import type { IAuthRequest } from '../../routes/unleash-types.js';
 import { ProjectApiTokenController } from '../../routes/admin-api/project/api-token.js';
@@ -47,6 +52,10 @@ import {
 import ProjectStatusController from '../project-status/project-status-controller.js';
 import FeatureLinkController from '../feature-links/feature-link-controller.js';
 import { ContextController } from '../context/context.js';
+import ChangeRequestsController from '../../routes/admin-api/change-requests.js';
+import ProjectActionsController from '../../routes/admin-api/project/actions.js';
+// INGKA Fork: Import for audit info extraction
+import { extractAuditInfo } from '../../util/extract-user.js';
 
 export default class ProjectController extends Controller {
     private projectService: ProjectService;
@@ -197,6 +206,70 @@ export default class ProjectController extends Controller {
             ],
         });
 
+        // INGKA Fork: Add project access endpoint
+        this.route({
+            method: 'get',
+            path: '/:projectId/access',
+            handler: this.getProjectAccess,
+            permission: NONE,
+            middleware: [
+                this.openApiService.validPath({
+                    tags: ['Projects'],
+                    operationId: 'getProjectAccess',
+                    summary: 'Get access configuration for a project.',
+                    description:
+                        'This endpoint returns the users, groups, and roles with access to the specified project.',
+                    responses: {
+                        200: {
+                            description: 'Project access configuration containing users, groups, and roles.',
+                        },
+                        ...getStandardResponses(401, 403, 404),
+                    },
+                }),
+            ],
+        });
+
+        // INGKA Fork: Add POST endpoint for project creation (enterprise-only in OSS)
+        this.route({
+            method: 'post',
+            path: '',
+            handler: this.createProject,
+            permission: 'CREATE_PROJECT',
+            middleware: [
+                this.openApiService.validPath({
+                    tags: ['Projects'],
+                    operationId: 'createProject',
+                    summary: 'Create a new project.',
+                    description: 'This endpoint creates a new project.',
+                    requestBody: createRequestSchema('createProjectSchema'),
+                    responses: {
+                        201: createResponseSchema('projectCreatedSchema'),
+                        ...getStandardResponses(400, 401, 403, 409),
+                    },
+                }),
+            ],
+        });
+
+        // Archive project endpoint
+        this.route({
+            method: 'post',
+            path: '/:projectId/archive',
+            handler: this.archiveProject,
+            permission: 'DELETE_PROJECT',
+            middleware: [
+                this.openApiService.validPath({
+                    tags: ['Projects'],
+                    operationId: 'archiveProject',
+                    summary: 'Archive a project.',
+                    description: 'This endpoint archives the specified project.',
+                    responses: {
+                        200: emptyResponse,
+                        ...getStandardResponses(400, 401, 403, 404),
+                    },
+                }),
+            ],
+        });
+
         this.use('/', new ProjectFeaturesController(config, services).router);
         this.use('/', new DependentFeaturesController(config, services).router);
         this.use(
@@ -211,10 +284,33 @@ export default class ProjectController extends Controller {
         this.use('/', new ProjectStatusController(config, services).router);
         this.use('/', new FeatureLifecycleController(config, services).router);
         this.use('/', new FeatureLinkController(config, services).router);
-        this.use(
-            '/',
-            new ContextController(config, services, 'project').router,
+        this.use('/:projectId/change-requests', new ChangeRequestsController(config, services).router);
+        this.use('/:projectId/actions', new ProjectActionsController(config, services).router);
+
+        if (this.flagResolver.isEnabled('projectContextFields')) {
+            this.use(
+                '/',
+                new ContextController(config, services, 'project').router,
+            );
+        }
+    }
+
+    // INGKA Fork: Add create project handler (enterprise-only in OSS)
+    async createProject(
+        req: IAuthRequest<unknown, unknown, any>,
+        res: Response,
+    ): Promise<void> {
+        const { user } = req;
+        const projectData = req.body;
+        const auditUser = extractAuditInfo(req);
+
+        const project = await this.projectService.createProject(
+            projectData,
+            user,
+            auditUser,
         );
+
+        res.status(201).json(project);
     }
 
     async getProjects(
@@ -222,10 +318,9 @@ export default class ProjectController extends Controller {
         res: Response<ProjectsSchema>,
     ): Promise<void> {
         const { user } = req;
+        // INGKA Fork: Removed hardcoded default project filter to show all projects
         const projects = await this.projectService.getProjects(
-            {
-                id: 'default',
-            },
+            {},
             user.id,
         );
 
@@ -344,5 +439,24 @@ export default class ProjectController extends Controller {
             outdatedSdksSchema.$id,
             { sdks: outdatedSdks },
         );
+    }
+
+    // INGKA Fork: Add project access handler
+    async getProjectAccess(
+        req: IAuthRequest<IProjectParam>,
+        res: Response,
+    ): Promise<void> {
+        const { projectId } = req.params;
+        const access = await this.projectService.getAccessToProject(projectId);
+        res.status(200).json(access);
+    }
+
+    async archiveProject(
+        req: IAuthRequest<IProjectParam>,
+        res: Response<void>,
+    ): Promise<void> {
+        const { projectId } = req.params;
+        await this.projectService.archiveProject(projectId, req.audit);
+        res.status(200).end();
     }
 }

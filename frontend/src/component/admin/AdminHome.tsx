@@ -295,12 +295,12 @@ export const AdminHome = () => {
     const breakpointedInstanceWidgetSize = isBreakpoint ? 12 : 5;
     const { isOss, isPro, isEnterprise } = useUiConfig();
     const plan = isOss()
-        ? 'Open source'
+        ? 'INGKA Custom OSS'
         : isPro()
           ? 'Pro'
           : isEnterprise()
             ? 'Enterprise'
-            : 'Unknown';
+            : 'INGKA Custom OSS';
     return (
         <StyledContainer>
             <EnterpriseEdgeDismissibleAlert />
@@ -316,7 +316,7 @@ export const AdminHome = () => {
                             plan={plan}
                             instanceId={stats.stats?.instanceId ?? 'unknown'}
                             version={
-                                stats.stats?.versionEnterprise ?? 'unknown'
+                                stats.stats?.versionOSS ?? stats.stats?.versionEnterprise ?? 'unknown'
                             }
                         />
                     </Grid>

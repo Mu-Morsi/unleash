@@ -4,7 +4,6 @@ import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useClearSWRCache } from 'hooks/useClearSWRCache';
 import type { ISignalQuerySignal } from 'interfaces/signal';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import { useUiFlag } from 'hooks/useUiFlag';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
 
@@ -56,7 +55,7 @@ const createSignalQuery = () => {
         options: SWRConfiguration = {},
         cachePrefix: string = '',
     ): UseSignalsOutput => {
-        const { isEnterprise } = useUiConfig();
+        // INGKA Fork: Removed isEnterprise() check to enable signals in OSS
         const signalsEnabled = useUiFlag('signals');
 
         const { KEY, fetcher } = getSignalQueryFetcher(params);
@@ -69,7 +68,7 @@ const createSignalQuery = () => {
 
         const { data, error, mutate, isLoading } =
             useConditionalSWR<SignalQueryResponse>(
-                isEnterprise() && signalsEnabled,
+                signalsEnabled,
                 fallbackData,
                 swrKey,
                 fetcher,

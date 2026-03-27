@@ -114,12 +114,13 @@ export const FeatureStrategyMenuCards = ({
     const availableFilters = useMemo(
         () =>
             FILTERS.filter(({ value }) => {
-                if (value === 'releaseTemplates') return isEnterprise();
+                // INGKA Fork: Always show release templates in OSS
+                if (value === 'releaseTemplates') return true;
                 if (value === 'advanced') return advancedStrategies.length > 0;
                 if (value === 'custom') return customStrategies.length > 0;
                 return true;
             }),
-        [isEnterprise, advancedStrategies.length, customStrategies.length],
+        [advancedStrategies.length, customStrategies.length],
     );
 
     const shouldRender = (key: StrategyFilterValue) => {

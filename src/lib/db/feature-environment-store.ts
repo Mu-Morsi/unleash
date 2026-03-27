@@ -102,28 +102,8 @@ export class FeatureEnvironmentStore implements IFeatureEnvironmentStore {
         );
     }
 
+    // INGKA Fork: Filtering removed - allow all environments
     addOssFilterIfNeeded(queryBuilder) {
-        if (this.isOss) {
-            return queryBuilder
-                .join(
-                    'environments',
-                    'environments.name',
-                    '=',
-                    `${T.featureEnvs}.environment`,
-                )
-                .whereIn('environments.name', [
-                    'default',
-                    'development',
-                    'production',
-                ])
-                .select([
-                    'feature_name',
-                    'environment',
-                    'variants',
-                    'last_seen_at',
-                    `${T.featureEnvs}.enabled`,
-                ]);
-        }
         return queryBuilder;
     }
 

@@ -21,7 +21,7 @@ import {
     formTemplateFixedSidebarWidth,
     formTemplateFormWidth,
     formTemplateSidebarWidth,
-} from './FormTemplate.styles';
+} from './FormTemplate.styles.ts';
 import { relative } from 'themes/themeStyles';
 
 interface ICreateProps {

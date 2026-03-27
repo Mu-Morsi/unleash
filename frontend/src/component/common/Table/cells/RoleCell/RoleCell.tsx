@@ -35,31 +35,25 @@ type TMultipleRolesProps = {
 type TRoleCellProps = TSingleRoleProps | TMultipleRolesProps;
 
 export const RoleCell: VFC<TRoleCellProps> = ({ role, roles, value }) => {
-    const { isEnterprise } = useUiConfig();
+    const rolesArray = roles ? roles : [role];
 
-    if (isEnterprise()) {
-        const rolesArray = roles ? roles : [role];
-
-        return (
-            <TextCell>
-                <TooltipLink
-                    tooltip={
-                        <StyledRoleDescriptions>
-                            {rolesArray.map((roleId) => (
-                                <RoleDescription
-                                    key={roleId}
-                                    roleId={roleId}
-                                    tooltip
-                                />
-                            ))}
-                        </StyledRoleDescriptions>
-                    }
-                >
-                    <StyledTruncator>{value}</StyledTruncator>
-                </TooltipLink>
-            </TextCell>
-        );
-    }
-
-    return <TextCell>{value}</TextCell>;
+    return (
+        <TextCell>
+            <TooltipLink
+                tooltip={
+                    <StyledRoleDescriptions>
+                        {rolesArray.map((roleId) => (
+                            <RoleDescription
+                                key={roleId}
+                                roleId={roleId}
+                                tooltip
+                            />
+                        ))}
+                    </StyledRoleDescriptions>
+                }
+            >
+                <StyledTruncator>{value}</StyledTruncator>
+            </TooltipLink>
+        </TextCell>
+    );
 };

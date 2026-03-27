@@ -4,7 +4,7 @@ import type React from 'react';
 import {
     StyledInputDescription,
     StyledSelectInput,
-} from '../ApiTokenForm.styles';
+} from '../ApiTokenForm.styles.tsx';
 import { useEnvironments } from 'hooks/api/getters/useEnvironments/useEnvironments';
 
 interface IEnvironmentSelectorProps {

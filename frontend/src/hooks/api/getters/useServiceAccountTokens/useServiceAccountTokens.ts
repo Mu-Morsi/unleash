@@ -3,7 +3,6 @@ import type { PatsSchema } from 'openapi';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 
 export interface IUseServiceAccountTokensOutput {
     tokens?: IPersonalAPIToken[];
@@ -15,10 +14,9 @@ export interface IUseServiceAccountTokensOutput {
 export const useServiceAccountTokens = (
     id: number,
 ): IUseServiceAccountTokensOutput => {
-    const { isEnterprise } = useUiConfig();
-
+    // INGKA Fork: Removed isEnterprise() check to enable service accounts in OSS
     const { data, error, mutate } = useConditionalSWR<PatsSchema>(
-        isEnterprise(),
+        true,
         { pats: [] },
         formatApiPath(`api/admin/service-account/${id}/token`),
         fetcher,

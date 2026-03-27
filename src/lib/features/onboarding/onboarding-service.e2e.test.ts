@@ -1,7 +1,7 @@
 import type {
     IOnboardingReadModel,
     IUnleashStores,
-} from '../../../lib/types/index.js';
+} from '../../types/index.js';
 import dbInit, {
     type ITestDb,
 } from '../../../test/e2e/helpers/database-init.js';

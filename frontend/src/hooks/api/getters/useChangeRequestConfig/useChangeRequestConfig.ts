@@ -2,14 +2,13 @@ import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import type { IChangeRequestEnvironmentConfig } from 'component/changeRequest/changeRequest.types';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 
 export const useChangeRequestConfig = (projectId: string) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable change requests in OSS
     const { data, error, mutate } = useConditionalSWR<
         IChangeRequestEnvironmentConfig[]
     >(
-        Boolean(projectId) && isEnterprise(),
+        Boolean(projectId),
         [],
         formatApiPath(`api/admin/projects/${projectId}/change-requests/config`),
         fetcher,

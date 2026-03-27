@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import type { IRoleWithPermissions } from 'interfaces/role';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
 
 export interface IUseRoleOutput {
@@ -17,10 +16,9 @@ export const useRole = (
     id?: string,
     options: SWRConfiguration = {},
 ): IUseRoleOutput => {
-    const { isEnterprise } = useUiConfig();
-
+    // INGKA Fork: Removed isEnterprise() check to enable role fetching for all users
     const { data, error, mutate } = useConditionalSWR(
-        Boolean(id) && isEnterprise(),
+        Boolean(id), // Only require id - enterprise restriction removed
         undefined,
         formatApiPath(`api/admin/roles/${id}`),
         fetcher,

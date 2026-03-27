@@ -3,13 +3,12 @@ import { useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 
 export const useLoginHistory = () => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable login history in OSS
 
     const { data, error, mutate } = useConditionalSWR(
-        isEnterprise(),
+        true,
         { events: [] },
         formatApiPath(`api/admin/logins`),
         fetcher,

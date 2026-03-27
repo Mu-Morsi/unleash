@@ -128,13 +128,15 @@ const flags: IFlags = {
         process.env.UNLEASH_EXPERIMENTAL_DISABLE_METRICS,
         false,
     ),
+    // INGKA Fork: Enable signals feature for OSS
     signals: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_SIGNALS,
-        false,
+        true,
     ),
+    // INGKA Fork: Enable automated actions for OSS
     automatedActions: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_AUTOMATED_ACTIONS,
-        false,
+        true,
     ),
     celebrateUnleash: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_CELEBRATE_UNLEASH,
@@ -148,9 +150,10 @@ const flags: IFlags = {
         process.env.UNLEASH_EXPERIMENTAL_ENCRYPT_EMAILS,
         false,
     ),
+    // INGKA Fork: Enable extended usage metrics for OSS
     extendedUsageMetrics: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_EXTENDED_USAGE_METRICS,
-        false,
+        true,
     ),
     outdatedSdksBanner: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_OUTDATED_SDKS_BANNER,
@@ -284,7 +287,11 @@ const flags: IFlags = {
         process.env.UNLEASH_EXPERIMENTAL_MILESTONE_PROGRESSION,
         false,
     ),
-
+    // INGKA Fork: Enable feature release plans for OSS
+    featureReleasePlans: parseEnvVarBoolean(
+        process.env.UNLEASH_EXPERIMENTAL_FEATURE_RELEASE_PLANS,
+        true,
+    ),
     plausibleMetrics: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_PLAUSIBLE_METRICS,
         false,
@@ -301,9 +308,10 @@ const flags: IFlags = {
         process.env.UNLEASH_EXPERIMENTAL_NEW_IN_UNLEASH,
         false,
     ),
+    // INGKA Fork: Enable GTM release management for OSS
     gtmReleaseManagement: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_GTM_RELEASE_MANAGEMENT,
-        false,
+        true,
     ),
     projectContextFields: parseEnvVarBoolean(
         process.env.UNLEASH_EXPERIMENTAL_PROJECT_CONTEXT_FIELDS,

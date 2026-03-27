@@ -1,5 +1,5 @@
-import type { IFeatureStrategiesStore } from '../../../features/feature-toggle/types/feature-toggle-strategies-store-type.js';
-import type { IFeatureToggleStore } from '../../../features/feature-toggle/types/feature-toggle-store-type.js';
+import type { IFeatureStrategiesStore } from '../types/feature-toggle-strategies-store-type.js';
+import type { IFeatureToggleStore } from '../types/feature-toggle-store-type.js';
 import dbInit, {
     type ITestDb,
 } from '../../../../test/e2e/helpers/database-init.js';

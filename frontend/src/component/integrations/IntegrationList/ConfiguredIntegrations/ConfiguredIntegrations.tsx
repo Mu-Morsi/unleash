@@ -1,6 +1,6 @@
 import type { AddonSchema, AddonTypeSchema } from 'openapi';
 import useLoading from 'hooks/useLoading';
-import { StyledCardsGrid } from '../IntegrationList.styles';
+import { StyledCardsGrid } from '../IntegrationList.styles.tsx';
 import { IntegrationCard } from '../IntegrationCard/IntegrationCard.tsx';
 import type { VFC } from 'react';
 import { Typography, styled } from '@mui/material';
@@ -75,11 +75,7 @@ export const ConfiguredIntegrations: VFC<ConfiguredIntegrationsProps> = ({
                         );
                     })}
                 <ConditionallyRender
-                    condition={
-                        isEnterprise() &&
-                        signalsEnabled &&
-                        signalEndpoints.length > 0
-                    }
+                    condition={signalsEnabled && signalEndpoints.length > 0}
                     show={
                         <IntegrationCard
                             variant='stacked'

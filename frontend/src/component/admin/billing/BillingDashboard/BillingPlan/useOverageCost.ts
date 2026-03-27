@@ -5,6 +5,7 @@ import {
     calculateOverageCost,
     calculateTotalUsage,
 } from 'utils/traffic-calculations';
+import { BILLING_TRAFFIC_PRICE } from './BillingPlan.js';
 import { useInstanceStatus } from 'hooks/api/getters/useInstanceStatus/useInstanceStatus';
 import { useInstancePrices } from 'hooks/api/getters/useInstancePrices/useInstancePrices';
 

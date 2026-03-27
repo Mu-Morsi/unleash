@@ -328,8 +328,8 @@ const defaultServerOption: IServerOption = {
 };
 
 const defaultVersionOption: IVersionOption = {
-    url: process.env.UNLEASH_VERSION_URL || 'https://version.unleash.run',
-    enable: parseEnvVarBoolean(process.env.CHECK_VERSION, true),
+    url: 'https://version.unleash.run',
+    enable: true,
 };
 
 const parseEnvVarInitialAdminUser = (): UsernameAdminUser | undefined => {
@@ -521,9 +521,8 @@ export function resolveIsOss(
     uiEnvironment?: string,
     testEnvironmentActive: boolean = false,
 ): boolean {
-    return testEnvironmentActive
-        ? (isOssOption ?? false)
-        : !isEnterprise && uiEnvironment?.toLowerCase() !== 'pro';
+    // INGKA Fork: Always return false to enable unlimited projects/environments
+    return false;
 }
 
 export function createConfig(options: IUnleashOptions): IUnleashConfig {
@@ -567,9 +566,7 @@ export function createConfig(options: IUnleashOptions): IUnleashConfig {
         options.versionCheck || {},
     ]);
 
-    const telemetry: boolean =
-        options.telemetry ||
-        parseEnvVarBoolean(process.env.SEND_TELEMETRY, true);
+    const telemetry: boolean = false;
     const initApiTokens = loadInitApiTokens();
 
     const authentication: IAuthOption = mergeAll([
@@ -742,14 +739,16 @@ export function createConfig(options: IUnleashOptions): IUnleashConfig {
             1,
             parseEnvVarNumber(
                 process.env.UNLEASH_ENVIRONMENTS_LIMIT,
-                options?.resourceLimits?.environments ?? 50,
+                // INGKA Fork: Set to very high limit (effectively unlimited)
+                options?.resourceLimits?.environments ?? 999999,
             ),
         ),
         projects: Math.max(
             1,
             parseEnvVarNumber(
                 process.env.UNLEASH_PROJECTS_LIMIT,
-                options?.resourceLimits?.projects ?? 500,
+                // INGKA Fork: Set to very high limit (effectively unlimited)
+                options?.resourceLimits?.projects ?? 999999,
             ),
         ),
         apiTokens: Math.max(
@@ -813,7 +812,8 @@ export function createConfig(options: IUnleashOptions): IUnleashConfig {
         server,
         listen,
         versionCheck,
-        telemetry,
+        // INGKA Fork: Telemetry disabled by default
+        telemetry: parseEnvVarBoolean(process.env.TELEMETRY, false),
         authentication,
         ui,
         import: importSetting,

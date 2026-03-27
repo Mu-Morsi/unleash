@@ -358,4 +358,44 @@ export class UserStore implements IUserStore {
 
         return firstInstanceUser ? firstInstanceUser.created_at : null;
     }
+
+    // INGKA Fork: Service Account methods for OSS support
+
+    /**
+     * Get all active service accounts
+     */
+    async getAllServiceAccounts(): Promise<User[]> {
+        const rows = await this.db(TABLE)
+            .select(USER_COLUMNS)
+            .where({
+                deleted_at: null,
+                is_service: true,
+            });
+        return rows.map(rowToUser);
+    }
+
+    /**
+     * Insert a new service account
+     */
+    async insertServiceAccount(user: ICreateUser): Promise<User> {
+        const rows = await this.db(TABLE)
+            .insert({
+                ...mapUserToColumns(user),
+                is_service: true,
+                created_at: new Date(),
+            })
+            .returning(USER_COLUMNS);
+        return rowToUser(rows[0]);
+    }
+
+    /**
+     * Get a user including service accounts (by ID)
+     */
+    async getById(id: number): Promise<User> {
+        const row = await this.activeAll()
+            .select(USER_COLUMNS)
+            .where({ id })
+            .first();
+        return rowToUser(row);
+    }
 }

@@ -76,10 +76,7 @@ export const ReleaseManagement = () => {
         'open' | 'closed'
     >('releaseManagementInfoAlert', 'open');
 
-    const { isEnterprise } = useUiConfig();
-    if (!isEnterprise()) {
-        return <PremiumFeature feature='releaseManagement' page />;
-    }
+    // INGKA Fork: Removed isEnterprise() check to enable release management in OSS
 
     return (
         <Container>
@@ -126,7 +123,7 @@ export const ReleaseManagement = () => {
                                 }}
                                 maxWidth='700px'
                                 permission={RELEASE_PLAN_TEMPLATE_CREATE}
-                                disabled={!isEnterprise()}
+                                disabled={false}
                             >
                                 New template
                             </ResponsiveButton>

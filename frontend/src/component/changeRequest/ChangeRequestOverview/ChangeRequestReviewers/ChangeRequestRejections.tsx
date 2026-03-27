@@ -1,4 +1,4 @@
-import type { IChangeRequestApproval } from '../../changeRequest.types';
+import type { IChangeRequestApproval } from '../../changeRequest.types.ts';
 import type { FC } from 'react';
 import { Typography } from '@mui/material';
 import { ChangeRequestRejector } from './ChangeRequestReviewer.tsx';

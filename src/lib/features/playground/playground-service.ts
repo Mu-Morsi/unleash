@@ -11,11 +11,11 @@ import type {
     IUnleashConfig,
 } from '../../types/index.js';
 import { offlineUnleashClient } from './offline-unleash-client.js';
-import type { FeatureInterface } from '../../features/playground/feature-evaluator/feature.js';
+import type { FeatureInterface } from './feature-evaluator/feature.js';
 import type {
     EvaluatedPlaygroundStrategy,
     FeatureStrategiesEvaluationResult,
-} from '../../features/playground/feature-evaluator/client.js';
+} from './feature-evaluator/client.js';
 import type { FeatureConfigurationClient } from '../feature-toggle/types/feature-toggle-strategies-store-type.js';
 import { generateObjectCombinations } from './generateObjectCombinations.js';
 import groupBy from 'lodash.groupby';

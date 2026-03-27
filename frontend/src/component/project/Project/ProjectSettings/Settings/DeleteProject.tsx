@@ -45,7 +45,7 @@ export const DeleteProject = ({
             <p>
                 Before you can delete a project, you must first archive all the
                 feature flags associated with it
-                {isEnterprise() && automatedActionsEnabled
+                {automatedActionsEnabled
                     ? ' and disable all actions that are in it'
                     : ''}
                 .
@@ -63,11 +63,7 @@ export const DeleteProject = ({
                 }
             />
             <ConditionallyRender
-                condition={
-                    isEnterprise() &&
-                    automatedActionsEnabled &&
-                    actionsCount > 0
-                }
+                condition={automatedActionsEnabled && actionsCount > 0}
                 show={
                     <p>
                         Currently there {actionsCount <= 1 ? 'is' : 'are'}{' '}
@@ -85,7 +81,7 @@ export const DeleteProject = ({
                     <li>all archived feature flags in this project</li>
                     <li>API keys configured to access only this project</li>
                     <ConditionallyRender
-                        condition={isEnterprise() && automatedActionsEnabled}
+                        condition={automatedActionsEnabled}
                         show={<li>all actions configured for this project</li>}
                     />
                 </ul>

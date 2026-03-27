@@ -168,13 +168,8 @@ export default class EnvironmentStore implements IEnvironmentStore {
     async get(key: string): Promise<IEnvironment> {
         const stopTimer = this.timer('get');
         let keyQuery = this.db<IEnvironmentsTable>(TABLE).where({ name: key });
-        if (this.isOss) {
-            keyQuery = keyQuery.whereIn('name', [
-                'default',
-                'development',
-                'production',
-            ]);
-        }
+        // INGKA Fork: OSS restriction removed - allow all environments
+        // Original: if (this.isOss) { keyQuery = keyQuery.whereIn(...); }
         const row = await keyQuery.first();
         stopTimer();
         if (row) {
@@ -194,9 +189,8 @@ export default class EnvironmentStore implements IEnvironmentStore {
         if (query) {
             qB = qB.where(query);
         }
-        if (this.isOss) {
-            qB = qB.whereIn('name', ['default', 'development', 'production']);
-        }
+        // INGKA Fork: OSS restriction removed - allow all environments
+        // Original: if (this.isOss) { qB = qB.whereIn('name', ['default', 'development', 'production']); }
         const rows = await qB;
         stopTimer();
         return rows.map(mapRow);
@@ -224,9 +218,7 @@ export default class EnvironmentStore implements IEnvironmentStore {
         if (query) {
             qB = qB.where(query);
         }
-        if (this.isOss) {
-            qB = qB.whereIn('name', ['default', 'development', 'production']);
-        }
+        // INGKA Fork: OSS filter removed - allow all environments
         const rows = await qB;
         stopTimer();
         return rows.map(mapRowWithCounts);
@@ -276,13 +268,7 @@ export default class EnvironmentStore implements IEnvironmentStore {
         if (query) {
             qB = qB.where(query);
         }
-        if (this.isOss) {
-            qB = qB.whereIn('environments.name', [
-                'default',
-                'production',
-                'development',
-            ]);
-        }
+        // INGKA Fork: OSS filter removed - allow all environments
 
         const rows = await qB;
         stopTimer();

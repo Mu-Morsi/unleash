@@ -1,7 +1,7 @@
 import { IconButton, styled, Tooltip, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CloseIcon from '@mui/icons-material/Close';
-import { StyledProjectCard, StyledProjectCardBody } from './ProjectCard.styles';
+import { StyledProjectCard, StyledProjectCardBody } from './ProjectCard.styles.ts';
 import { ProjectCardFooter } from './ProjectCardFooter/ProjectCardFooter.tsx';
 import upgradeProjects from 'assets/img/upgradeProjects.png';
 import { formatAssetPath } from 'utils/formatPath';

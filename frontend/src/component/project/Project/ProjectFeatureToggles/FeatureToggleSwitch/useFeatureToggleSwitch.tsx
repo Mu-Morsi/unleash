@@ -13,7 +13,7 @@ import { EnableEnvironmentDialog } from './EnableEnvironmentDialog/EnableEnviron
 import type {
     OnFeatureToggleSwitchArgs,
     UseFeatureToggleSwitchType,
-} from './FeatureToggleSwitch.types';
+} from './FeatureToggleSwitch.types.ts';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 
 type Middleware = (next: () => void) => void;

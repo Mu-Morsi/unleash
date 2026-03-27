@@ -1,4 +1,4 @@
-import { SYSTEM_USER } from '../../lib/types/index.js';
+import { SYSTEM_USER } from '../types/index.js';
 import type { IUser } from '../types/index.js';
 import {
     extractUserIdFromUser,

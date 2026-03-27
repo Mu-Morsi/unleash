@@ -1,11 +1,9 @@
 import { PageContent } from 'component/common/PageContent/PageContent';
-import useUiConfig from 'hooks/api/getters/useUiConfig/useUiConfig';
 import { PageHeader } from 'component/common/PageHeader/PageHeader';
 import { ADMIN } from '@server/types/permissions';
 import { useRequiredPathParam } from 'hooks/useRequiredPathParam';
 import { usePageTitle } from 'hooks/usePageTitle';
 import { useProjectOverviewNameOrId } from 'hooks/api/getters/useProjectOverview/useProjectOverview';
-import { PremiumFeature } from 'component/common/PremiumFeature/PremiumFeature';
 import { PermissionGuard } from 'component/common/PermissionGuard/PermissionGuard';
 import { ProjectActionsTable } from './ProjectActionsTable/ProjectActionsTable.tsx';
 import ResponsiveButton from 'component/common/ResponsiveButton/ResponsiveButton';
@@ -17,7 +15,6 @@ import { useState } from 'react';
 export const ProjectActions = () => {
     const projectId = useRequiredPathParam('projectId');
     const projectName = useProjectOverviewNameOrId(projectId);
-    const { isEnterprise } = useUiConfig();
     const theme = useTheme();
 
     usePageTitle(`Project actions – ${projectName}`);
@@ -29,14 +26,6 @@ export const ProjectActions = () => {
         setSelectedAction(undefined);
         setActionModalOpen(true);
     };
-
-    if (!isEnterprise()) {
-        return (
-            <PageContent header={<PageHeader title='Actions' />}>
-                <PremiumFeature feature='actions' />
-            </PageContent>
-        );
-    }
 
     return (
         <PageContent

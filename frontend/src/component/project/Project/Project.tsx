@@ -13,7 +13,7 @@ import {
     StyledTab,
     StyledTabContainer,
     StyledTopRow,
-} from './Project.styles';
+} from './Project.styles.ts';
 import {
     Badge as CounterBadge,
     Box,

@@ -1,4 +1,4 @@
-import { validateFeatureNamingExample } from './ProjectEnterpriseSettingsForm.jsx';
+import { validateFeatureNamingExample } from './ProjectEnterpriseSettingsForm.js';
 
 describe('validateFeatureNaming', () => {
     test.each([

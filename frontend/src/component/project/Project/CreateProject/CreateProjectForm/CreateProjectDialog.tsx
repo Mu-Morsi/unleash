@@ -24,7 +24,7 @@ import { SingleSelectConfigButton } from 'component/common/DialogFormTemplate/Co
 import { useEnvironments } from 'hooks/api/getters/useEnvironments/useEnvironments';
 import { useStickinessOptions } from 'hooks/useStickinessOptions';
 import { ChangeRequestTableConfigButton } from './ConfigButtons/ChangeRequestTableConfigButton.tsx';
-import { StyledDefinitionList } from './CreateProjectDialog.styles';
+import { StyledDefinitionList } from './CreateProjectDialog.styles.tsx';
 import { ProjectIcon } from 'component/common/ProjectIcon/ProjectIcon';
 import { ChangeRequestIcon } from 'component/common/ChangeRequestIcon/ChangeRequestIcon.tsx';
 
@@ -375,8 +375,9 @@ export const CreateProjectDialog = ({
                                     />
                                 }
                             />
+                            {/* INGKA Fork: Always show change requests config in OSS */}
                             <ConditionallyRender
-                                condition={isEnterprise()}
+                                condition={true}
                                 show={
                                     <ChangeRequestTableConfigButton
                                         tooltip={{

@@ -15,6 +15,7 @@ import {
     calculateOverageCost,
     calculateTotalUsage,
 } from 'utils/traffic-calculations';
+import { BILLING_TRAFFIC_PRICE } from '../../../billing/BillingDashboard/BillingPlan/BillingPlan.js';
 import { averageTrafficPreviousMonths } from '../average-traffic-previous-months.js';
 import { useConnectionsConsumption } from 'hooks/api/getters/useConnectionsConsumption/useConnectionsConsumption';
 import { useRequestsConsumption } from 'hooks/api/getters/useRequestsConsumption/useRequestsConsumption';

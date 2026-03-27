@@ -2,20 +2,20 @@ import dbInit, {
     type ITestDb,
 } from '../../../test/e2e/helpers/database-init.js';
 import getLogger from '../../../test/fixtures/no-logger.js';
-import type { FeatureToggleService } from '../../../lib/features/feature-toggle/feature-toggle-service.js';
-import type ProjectService from '../../../lib/features/project/project-service.js';
+import type { FeatureToggleService } from '../feature-toggle/feature-toggle-service.js';
+import type ProjectService from '../project/project-service.js';
 import { createTestConfig } from '../../../test/config/test-config.js';
 import type {
     EventService,
     ProjectInsightsService,
-} from '../../../lib/services/index.js';
+} from '../../services/index.js';
 import { FeatureEnvironmentEvent } from '../../types/index.js';
 import { subDays } from 'date-fns';
 import {
     createEventsService,
     createFeatureToggleService,
     createProjectService,
-} from '../../../lib/features/index.js';
+} from '../index.js';
 import {
     type IUnleashStores,
     type IUser,

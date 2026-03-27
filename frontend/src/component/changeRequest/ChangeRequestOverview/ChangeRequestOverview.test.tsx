@@ -3,7 +3,7 @@ import { testServerRoute, testServerSetup } from 'utils/testServer';
 import type {
     ChangeRequestState,
     ChangeRequestType,
-} from '../changeRequest.types';
+} from '../changeRequest.types.ts';
 import { render } from 'utils/testRenderer';
 import { ChangeRequestOverview } from './ChangeRequestOverview.tsx';
 import {

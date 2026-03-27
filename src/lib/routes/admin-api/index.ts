@@ -38,6 +38,25 @@ import PersonalDashboardController from '../../features/personal-dashboard/perso
 import FeatureLifecycleCountController from '../../features/feature-lifecycle/feature-lifecycle-count-controller.js';
 import type { IUnleashServices } from '../../services/index.js';
 import CustomMetricsController from '../../features/metrics/custom/custom-metrics-controller.js';
+// INGKA Fork: Import RolesController for role management
+import { RolesController } from './roles-controller.js';
+import { PermissionsController } from './permissions.js';
+import { GroupsController } from './groups.js';
+import { ServiceAccountController } from './service-account.js';
+// INGKA Fork: Import impact metrics and insights controllers
+import { ImpactMetricsController } from './impact-metrics.js';
+import { createImpactMetricsReadModel } from '../../features/metrics/impact/impact-metrics-read-model.js';
+import { InsightsController } from './insights.js';
+import { createInstanceInsightsReadModel } from '../../features/instance-insights/instance-insights-read-model.js';
+import BannersController from './banners.js';
+import LicenseController from './license.js';
+import ReleasePlanTemplatesController from './release-plan-templates.js';
+import ScimSettingsController from './scim-settings.js';
+import AuthSettingsController from './auth-settings.js';
+import TrafficController from './traffic.js';
+import LoginsController from './logins.js';
+import EdgesController from './edges.js';
+import SignalEndpointsController from './signal-endpoints.js';
 
 export class AdminApi extends Controller {
     constructor(
@@ -180,6 +199,67 @@ export class AdminApi extends Controller {
         this.app.use(
             '/record-ui-error',
             new UiObservabilityController(config, services).router,
+        );
+
+        // INGKA Fork: Register roles, permissions, groups, and service-account controllers for role/group/service-account management
+        this.app.use('/roles', new RolesController(config, services).router);
+        this.app.use(
+            '/permissions',
+            new PermissionsController(config, services).router,
+        );
+        this.app.use('/groups', new GroupsController(config, services).router);
+        this.app.use(
+            '/service-account',
+            new ServiceAccountController(config, services).router,
+        );
+        // INGKA Fork: Register impact-metrics controller
+        const impactMetricsReadModel = createImpactMetricsReadModel(db);
+        this.app.use(
+            '/impact-metrics',
+            new ImpactMetricsController(config, services, impactMetricsReadModel).router,
+        );
+        // INGKA Fork: Register insights controller
+        const insightsReadModel = createInstanceInsightsReadModel(db);
+        this.app.use(
+            '/insights',
+            new InsightsController(config, services, insightsReadModel).router,
+        );
+        // INGKA Fork: Register banners and license controllers
+        this.app.use(
+            '/banners',
+            new BannersController(config, services).router,
+        );
+        this.app.use(
+            '/license',
+            new LicenseController(config, services).router,
+        );
+        this.app.use(
+            '/release-plan-templates',
+            new ReleasePlanTemplatesController(config, services).router,
+        );
+        this.app.use(
+            '/scim-settings',
+            new ScimSettingsController(config, services).router,
+        );
+        this.app.use(
+            '/auth',
+            new AuthSettingsController(config, services).router,
+        );
+        this.app.use(
+            '/metrics/traffic',
+            new TrafficController(config, services).router,
+        );
+        this.app.use(
+            '/logins',
+            new LoginsController(config, services).router,
+        );
+        this.app.use(
+            '/metrics/edges',
+            new EdgesController(config, services).router,
+        );
+        this.app.use(
+            '/signal-endpoints',
+            new SignalEndpointsController(config, services).router,
         );
     }
 }

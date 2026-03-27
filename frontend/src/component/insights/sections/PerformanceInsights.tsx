@@ -23,7 +23,7 @@ import {
     StyledWidget,
     StyledWidgetContent,
     StyledWidgetStats,
-} from '../InsightsCharts.styles';
+} from '../InsightsCharts.styles.ts';
 import { NewProductionFlagsChart } from '../componentsChart/NewProductionFlagsChart/NewProductionFlagsChart.tsx';
 import { CreationArchiveChart } from '../componentsChart/CreationArchiveChart/CreationArchiveChart.tsx';
 import { CreationArchiveStats } from '../componentsStat/CreationArchiveStats/CreationArchiveStats.tsx';

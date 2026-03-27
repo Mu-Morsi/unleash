@@ -2,14 +2,13 @@ import { formatApiPath } from 'utils/formatPath';
 import { useMemo } from 'react';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { IProjectRoleUsageCount } from 'interfaces/project';
 
 export const useProjectRoleAccessUsage = (roleId?: number) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable project role access in OSS
 
     const { data, error, mutate } = useConditionalSWR(
-        isEnterprise() && roleId,
+        !!roleId,
         { projects: [] },
         formatApiPath(`api/admin/projects/roles/${roleId}/access`),
         fetcher,

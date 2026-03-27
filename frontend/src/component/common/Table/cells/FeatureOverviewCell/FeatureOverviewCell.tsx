@@ -6,7 +6,7 @@ import useFeatureTypes from 'hooks/api/getters/useFeatureTypes/useFeatureTypes';
 import { getFeatureTypeIcons } from 'utils/getFeatureTypeIcons';
 import { useSearchHighlightContext } from '../../SearchHighlightContext/SearchHighlightContext.tsx';
 import { Highlighter } from '../../../Highlighter/Highlighter.tsx';
-import { StyledDescription } from '../LinkCell/LinkCell.styles';
+import { StyledDescription } from '../LinkCell/LinkCell.styles.ts';
 import { Link } from 'react-router-dom';
 import { Badge } from '../../../Badge/Badge.tsx';
 import { HtmlTooltip } from '../../../HtmlTooltip/HtmlTooltip.tsx';

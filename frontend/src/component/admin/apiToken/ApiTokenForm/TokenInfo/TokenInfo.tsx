@@ -1,5 +1,5 @@
 import type React from 'react';
-import { StyledInput, StyledInputDescription } from '../ApiTokenForm.styles';
+import { StyledInput, StyledInputDescription } from '../ApiTokenForm.styles.tsx';
 import type { ApiTokenFormErrorType } from '../useApiTokenForm.ts';
 
 interface ITokenInfoProps {

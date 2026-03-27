@@ -1,7 +1,7 @@
 import {
     StyledProjectInfoWidgetContainer,
     StyledWidgetTitle,
-} from './ProjectInfo.styles';
+} from './ProjectInfo.styles.ts';
 import useUiConfig from 'hooks/api/getters/useUiConfig/useUiConfig';
 import { StatusBox } from '../ProjectStats/StatusBox.tsx';
 import { WidgetFooterLink } from './WidgetFooterLink.tsx';

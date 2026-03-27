@@ -23,7 +23,7 @@ import {
     StyledErrorIcon,
     StyledScheduleFailedIcon,
     StyledScheduleSuspendedIcon,
-} from './ChangeRequestReviewStatus.styles';
+} from './ChangeRequestReviewStatus.styles.ts';
 import type {
     ChangeRequestState,
     ChangeRequestType,

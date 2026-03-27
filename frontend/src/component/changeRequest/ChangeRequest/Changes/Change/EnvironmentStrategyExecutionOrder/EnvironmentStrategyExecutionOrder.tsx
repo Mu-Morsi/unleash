@@ -1,4 +1,4 @@
-import type { IChangeRequestReorderStrategy } from '../../../../changeRequest.types';
+import type { IChangeRequestReorderStrategy } from '../../../../changeRequest.types.ts';
 import type { ReactNode } from 'react';
 import { useFeature } from 'hooks/api/getters/useFeature/useFeature';
 import { Box, styled } from '@mui/material';

@@ -25,7 +25,7 @@ import { parseDateValue, parseValidDate } from 'component/common/util';
 import {
     isStringOrStringArray,
     normalizeCustomContextProperties,
-} from '../../playground.utils';
+} from '../../playground.utils.ts';
 import CheckBoxOutlineBlank from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { useFullUnleashContext } from 'hooks/api/getters/useUnleashContext/useFullUnleashContext.ts';

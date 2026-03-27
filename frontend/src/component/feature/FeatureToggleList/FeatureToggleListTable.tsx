@@ -15,7 +15,6 @@ import { useFavoriteFeaturesApi } from 'hooks/api/actions/useFavoriteFeaturesApi
 import { FavoriteIconHeader } from 'component/common/Table/FavoriteIconHeader/FavoriteIconHeader';
 import { useEnvironments } from 'hooks/api/getters/useEnvironments/useEnvironments';
 import { ExportDialog } from './ExportDialog.tsx';
-import useUiConfig from 'hooks/api/getters/useUiConfig/useUiConfig';
 import { focusable } from 'themes/themeStyles';
 import { FeatureLifecycleCell } from 'component/common/Table/cells/FeatureSeenCell/FeatureEnvironmentSeenCell';
 import useToast from 'hooks/useToast';
@@ -59,7 +58,6 @@ const columnHelper = createColumnHelper<FeatureSearchResponseSchema>();
 
 export const FeatureToggleListTable: FC = () => {
     const theme = useTheme();
-    const { isOss } = useUiConfig();
     const { trackEvent } = usePlausibleTracker();
     const { environments } = useEnvironments();
     const enabledEnvironments = environments
@@ -114,7 +112,8 @@ export const FeatureToggleListTable: FC = () => {
         [favorite, refetchFeatures, unfavorite, setToastApiError],
     );
 
-    const showStatusColumn = !isOss();
+    // INGKA Fork: Always show status column in OSS
+    const showStatusColumn = true;
 
     const columns = useMemo(
         () => [

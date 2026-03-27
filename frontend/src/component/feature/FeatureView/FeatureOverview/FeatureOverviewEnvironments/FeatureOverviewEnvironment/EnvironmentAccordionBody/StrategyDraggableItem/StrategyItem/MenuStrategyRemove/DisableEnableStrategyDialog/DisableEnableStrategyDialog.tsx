@@ -5,7 +5,7 @@ import { useSuggestEnableDisable } from './hooks/useSuggestEnableDisable.ts';
 import { useChangeRequestsEnabled } from 'hooks/useChangeRequestsEnabled';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 import { FeatureStrategyChangeRequestAlert } from 'component/feature/FeatureStrategy/FeatureStrategyForm/FeatureStrategyChangeRequestAlert/FeatureStrategyChangeRequestAlert';
-import type { IDisableEnableStrategyProps } from './IDisableEnableStrategyProps.tsx';
+import type { IDisableEnableStrategyProps } from './IDisableEnableStrategyProps.ts';
 
 export const DisableEnableStrategyDialog = ({
     isOpen,

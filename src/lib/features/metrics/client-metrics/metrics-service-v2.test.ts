@@ -8,7 +8,7 @@ import { LastSeenService } from '../last-seen/last-seen-service.js';
 import type {
     IClientMetricsStoreV2,
     IUnleashConfig,
-} from '../../../../lib/types/index.js';
+} from '../../../types/index.js';
 import { endOfDay, startOfHour, subDays, subHours } from 'date-fns';
 import type { IClientMetricsEnv } from './client-metrics-store-v2-type.js';
 import { UnknownFlagsService } from '../unknown-flags/unknown-flags-service.js';

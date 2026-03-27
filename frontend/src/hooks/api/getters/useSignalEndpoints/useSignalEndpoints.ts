@@ -2,7 +2,6 @@ import { useContext, useMemo } from 'react';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
 import { useConditionalSWR } from '../useConditionalSWR/useConditionalSWR.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { ISignalEndpoint } from 'interfaces/signal';
 import { useUiFlag } from 'hooks/useUiFlag';
 import AccessContext from 'contexts/AccessContext';
@@ -15,13 +14,13 @@ const DEFAULT_DATA = {
 
 export const useSignalEndpoints = () => {
     const { isAdmin } = useContext(AccessContext);
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable signals in OSS
     const signalsEnabled = useUiFlag('signals');
 
     const { data, error, mutate } = useConditionalSWR<{
         signalEndpoints: ISignalEndpoint[];
     }>(
-        isEnterprise() && isAdmin && signalsEnabled,
+        isAdmin && signalsEnabled,
         DEFAULT_DATA,
         formatApiPath(ENDPOINT),
         fetcher,

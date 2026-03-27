@@ -11,7 +11,7 @@ import {
     LimitContainer,
     FormActions,
     IconWrapper,
-} from './DialogFormTemplate.styles';
+} from './DialogFormTemplate.styles.tsx';
 import { Button } from '@mui/material';
 import { CreateButton } from 'component/common/CreateButton/CreateButton';
 import type { IPermissionButtonProps } from 'component/common/PermissionButton/PermissionButton';

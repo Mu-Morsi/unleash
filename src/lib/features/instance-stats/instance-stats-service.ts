@@ -13,7 +13,7 @@ import type { IContextFieldStore } from '../context/context-field-store-type.js'
 import type { IEnvironmentStore } from '../project-environments/environment-store-type.js';
 import type { IFeatureToggleStore } from '../feature-toggle/types/feature-toggle-store-type.js';
 import type { IGroupStore } from '../../types/stores/group-store.js';
-import type { IProjectStore } from '../../features/project/project-store-type.js';
+import type { IProjectStore } from '../project/project-store-type.js';
 import type { IStrategyStore } from '../../types/stores/strategy-store.js';
 import type { IUserStore } from '../../types/stores/user-store.js';
 import type { ISegmentStore } from '../segment/segment-store-type.js';

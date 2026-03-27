@@ -190,6 +190,36 @@ class UserStoreMock implements IUserStore {
     async markSeenAt(_secrets: string[]): Promise<void> {
         throw new Error('Not implemented');
     }
+
+    // INGKA Fork: Add service account methods for OSS support
+    async getAllServiceAccounts(): Promise<IUser[]> {
+        return this.data.filter((u) => u.accountType === 'Service Account');
+    }
+
+    async insertServiceAccount(user: ICreateUser): Promise<IUser> {
+        const newUser: IUser = {
+            id: this.idSeq++,
+            name: user.name ?? '',
+            username: user.username ?? '',
+            email: user.email ?? '',
+            createdAt: new Date(),
+            isAPI: false,
+            permissions: [],
+            loginAttempts: 0,
+            imageUrl: '',
+            accountType: 'Service Account',
+        };
+        this.data.push(newUser);
+        return newUser;
+    }
+
+    async getById(id: number): Promise<IUser> {
+        const user = this.data.find((u) => u.id === id);
+        if (!user) {
+            throw new Error(`User with id ${id} not found`);
+        }
+        return user;
+    }
 }
 
 export default UserStoreMock;

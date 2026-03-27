@@ -1,5 +1,5 @@
 import type { Knex } from 'knex';
-import type { IUnleashConfig } from '../types/index.ts';
+import type { IUnleashConfig } from '../types/index.js';
 import { ulid } from 'ulidx';
 
 export interface TransactionUserParams {

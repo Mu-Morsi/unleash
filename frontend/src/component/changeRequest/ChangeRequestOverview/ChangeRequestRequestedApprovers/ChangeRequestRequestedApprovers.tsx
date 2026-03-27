@@ -16,7 +16,7 @@ import {
     useRequestedApprovers,
 } from 'hooks/api/getters/useRequestedApprovers/useRequestedApprovers';
 import { useState, type FC } from 'react';
-import type { ChangeRequestType } from '../../changeRequest.types';
+import type { ChangeRequestType } from '../../changeRequest.types.js';
 import {
     ChangeRequestApprover,
     ChangeRequestPending,

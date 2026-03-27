@@ -42,6 +42,8 @@ import {
     createFakePatService,
 } from '../features/pat/createPatService.js';
 import { PublicSignupTokenService } from './public-signup-token-service.js';
+// INGKA Fork: Import ServiceAccountService for OSS support
+import { ServiceAccountService } from './service-account-service.js';
 import { LastSeenService } from '../features/metrics/last-seen/last-seen-service.js';
 import { InstanceStatsService } from '../features/instance-stats/instance-stats-service.js';
 import { FavoritesService } from './favorites-service.js';
@@ -112,6 +114,8 @@ import {
     createFeatureSearchService,
 } from '../features/feature-search/createFeatureSearchService.js';
 import { FeatureSearchService } from '../features/feature-search/feature-search-service.js';
+import { createFakeChangeRequestSearchService } from '../features/change-request-search/createChangeRequestSearchService.js';
+import { ChangeRequestSearchService } from '../features/change-request-search/change-request-search-service.js';
 import {
     createFakeTagTypeService,
     createTagTypeService,
@@ -327,6 +331,10 @@ export const createServices = (
         ? createFeatureSearchService(config, privateProjectChecker)(db)
         : createFakeFeatureSearchService(config, privateProjectChecker);
 
+    // INGKA Fork: Create change request search service for OSS support
+    const changeRequestSearchService =
+        createFakeChangeRequestSearchService(config);
+
     const transactionalEnvironmentService = db
         ? withTransactional(createEnvironmentService(config), db)
         : withFakeTransactional(createFakeEnvironmentService(config));
@@ -435,6 +443,15 @@ export const createServices = (
         ? createPatService(db, config)
         : createFakePatService(config);
 
+    // INGKA Fork: Create ServiceAccountService for OSS support
+    const serviceAccountService = new ServiceAccountService(
+        stores,
+        config,
+        accessService,
+        patService,
+        eventService,
+    );
+
     const publicSignupTokenService = new PublicSignupTokenService(
         stores,
         config,
@@ -540,6 +557,7 @@ export const createServices = (
         frontendApiService,
         edgeService,
         patService,
+        serviceAccountService,
         publicSignupTokenService,
         lastSeenService,
         instanceStatsService,
@@ -557,6 +575,7 @@ export const createServices = (
         transactionalDependentFeaturesService,
         clientFeatureToggleService,
         featureSearchService,
+        changeRequestSearchService,
         inactiveUsersService,
         projectInsightsService,
         jobService,
@@ -614,6 +633,7 @@ export {
     PatService,
     createFakePatService,
     PublicSignupTokenService,
+    ServiceAccountService,
     LastSeenService,
     InstanceStatsService,
     FavoritesService,
@@ -621,6 +641,7 @@ export {
     DependentFeaturesService,
     ClientFeatureToggleService,
     FeatureSearchService,
+    ChangeRequestSearchService,
     ProjectInsightsService,
     JobService,
     FeatureLifecycleService,
@@ -680,6 +701,7 @@ export interface IUnleashServices {
     openApiService: OpenApiService;
     clientSpecService: ClientSpecService;
     patService: PatService;
+    serviceAccountService: ServiceAccountService;
     lastSeenService: LastSeenService;
     instanceStatsService: InstanceStatsService;
     favoritesService: FavoritesService;
@@ -697,6 +719,7 @@ export interface IUnleashServices {
     transactionalDependentFeaturesService: WithTransactional<DependentFeaturesService>;
     clientFeatureToggleService: ClientFeatureToggleService;
     featureSearchService: FeatureSearchService;
+    changeRequestSearchService: ChangeRequestSearchService;
     inactiveUsersService: InactiveUsersService;
     projectInsightsService: ProjectInsightsService;
     jobService: JobService;

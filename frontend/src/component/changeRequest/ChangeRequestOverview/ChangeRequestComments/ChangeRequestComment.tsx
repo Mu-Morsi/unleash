@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import { Box, styled, Typography } from '@mui/material';
 import { TimeAgo } from 'component/common/TimeAgo/TimeAgo';
 import { StyledAvatar } from './StyledAvatar.tsx';
-import type { IChangeRequestComment } from '../../changeRequest.types';
+import type { IChangeRequestComment } from '../../changeRequest.types.ts';
 
 const ChangeRequestCommentWrapper = styled(Box)(({ theme }) => ({
     display: 'flex',

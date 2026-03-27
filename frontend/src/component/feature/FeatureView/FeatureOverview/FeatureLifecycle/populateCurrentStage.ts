@@ -1,5 +1,5 @@
-import type { LifecycleStage } from './LifecycleStage.jsx';
-import type { LifecycleFeature } from './FeatureLifecycle.jsx';
+import type { LifecycleStage } from './LifecycleStage.js';
+import type { LifecycleFeature } from './FeatureLifecycle.js';
 
 export const populateCurrentStage = (
     feature: Pick<LifecycleFeature, 'lifecycle' | 'environments'>,

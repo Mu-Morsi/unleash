@@ -2,7 +2,7 @@ import useFeatureStrategyApi from 'hooks/api/actions/useFeatureStrategyApi/useFe
 import { useFeature } from 'hooks/api/getters/useFeature/useFeature';
 import useToast from 'hooks/useToast';
 import { formatUnknownError } from 'utils/formatUnknownError';
-import type { IDisableEnableStrategyProps } from '../IDisableEnableStrategyProps.jsx';
+import type { IDisableEnableStrategyProps } from '../IDisableEnableStrategyProps.js';
 
 export const useEnableDisable = ({
     projectId,

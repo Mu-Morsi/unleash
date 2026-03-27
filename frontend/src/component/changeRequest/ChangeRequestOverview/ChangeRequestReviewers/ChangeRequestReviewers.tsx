@@ -4,7 +4,7 @@ import type { FC, ReactNode } from 'react';
 import { ConditionallyRender } from '../../../common/ConditionallyRender/ConditionallyRender.tsx';
 import { ChangeRequestRejections } from './ChangeRequestRejections.tsx';
 import { ChangeRequestApprovals } from './ChangeRequestApprovals.tsx';
-import type { ChangeRequestType } from '../../changeRequest.types';
+import type { ChangeRequestType } from '../../changeRequest.types.ts';
 
 const StyledBox = styled(Box)(({ theme }) => ({
     marginBottom: theme.spacing(2),

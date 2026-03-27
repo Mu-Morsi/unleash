@@ -23,7 +23,7 @@ import {
     generateHourBuckets,
     type HourBucket,
 } from '../../../util/time-utils.js';
-import type { ClientMetricsSchema } from '../../../../lib/openapi/index.js';
+import type { ClientMetricsSchema } from '../../../openapi/index.js';
 import { nameSchema } from '../../../schema/feature-schema.js';
 import memoizee from 'memoizee';
 import type { UnknownFlagsService } from '../unknown-flags/unknown-flags-service.js';

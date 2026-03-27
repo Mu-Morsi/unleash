@@ -25,7 +25,7 @@ import Input from 'component/common/Input/Input';
 import {
     extractProjectEnvironmentFromToken,
     validateTokenFormat,
-} from '../../playground.utils';
+} from '../../playground.utils.ts';
 import Clear from '@mui/icons-material/Clear';
 import { ProjectSelect } from '../../../../common/ProjectSelect/ProjectSelect.tsx';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';

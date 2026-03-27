@@ -4,7 +4,7 @@ import { styled, Typography } from '@mui/material';
 import {
     StyledProjectInfoWidgetContainer,
     StyledWidgetTitle,
-} from './ProjectInfo.styles';
+} from './ProjectInfo.styles.ts';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 import { WidgetFooterLink } from './WidgetFooterLink.tsx';
 

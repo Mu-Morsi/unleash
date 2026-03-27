@@ -26,9 +26,6 @@ import { Search } from 'component/common/Search/Search';
 import { HighlightCell } from 'component/common/Table/cells/HighlightCell/HighlightCell';
 import { TextCell } from 'component/common/Table/cells/TextCell/TextCell';
 import type { IEnvironment } from 'interfaces/environments';
-import { useUiFlag } from 'hooks/useUiFlag';
-import { PremiumFeature } from 'component/common/PremiumFeature/PremiumFeature';
-import useUiConfig from 'hooks/api/getters/useUiConfig/useUiConfig';
 
 const StyledAlert = styled(Alert)(({ theme }) => ({
     marginBottom: theme.spacing(4),
@@ -38,8 +35,6 @@ export const EnvironmentTable = () => {
     const { changeSortOrder } = useEnvironmentApi();
     const { setToastApiError } = useToast();
     const { environments, mutateEnvironments } = useEnvironments();
-    const isFeatureEnabled = useUiFlag('EEA');
-    const { isEnterprise } = useUiConfig();
 
     const onMoveItem: OnMoveItem = useCallback(
         async ({ dragIndex, dropIndex, save }) => {
@@ -66,36 +61,32 @@ export const EnvironmentTable = () => {
     const columnsWithActions = useMemo(() => {
         const baseColumns = [
             ...COLUMNS,
-            ...(isFeatureEnabled
-                ? [
-                      {
-                          Header: 'Actions',
-                          id: 'Actions',
-                          align: 'center',
-                          width: '1%',
-                          Cell: ({
-                              row: { original },
-                          }: {
-                              row: { original: IEnvironment };
-                          }) => (
-                              <EnvironmentActionCell environment={original} />
-                          ),
-                          disableGlobalFilter: true,
-                      },
-                  ]
-                : []),
+            // INGKA Fork: Always include Actions column (removed EEA flag check)
+            {
+                Header: 'Actions',
+                id: 'Actions',
+                align: 'center',
+                width: '1%',
+                Cell: ({
+                    row: { original },
+                }: {
+                    row: { original: IEnvironment };
+                }) => (
+                    <EnvironmentActionCell environment={original} />
+                ),
+                disableGlobalFilter: true,
+            },
         ];
-        if (isEnterprise()) {
-            baseColumns.splice(2, 0, {
-                Header: 'Change request',
-                accessor: (row: IEnvironment) =>
-                    Number.isInteger(row.requiredApprovals) ? 'yes' : 'no',
-                Cell: TextCell,
-            });
-        }
+        // INGKA Fork: Always show change request column (removed isEnterprise check)
+        baseColumns.splice(2, 0, {
+            Header: 'Change request',
+            accessor: (row: IEnvironment) =>
+                Number.isInteger(row.requiredApprovals) ? 'yes' : 'no',
+            Cell: TextCell,
+        });
 
         return baseColumns;
-    }, [isFeatureEnabled]);
+    }, []);
 
     const {
         getTableProps,
@@ -130,13 +121,7 @@ export const EnvironmentTable = () => {
         <PageHeader title={`Environments (${count})`} actions={headerActions} />
     );
 
-    if (!isFeatureEnabled) {
-        return (
-            <PageContent header={header}>
-                <PremiumFeature feature='environments' />
-            </PageContent>
-        );
-    }
+    // INGKA Fork: Removed PremiumFeature guard (EEA flag check) to always show environments
 
     return (
         <PageContent header={header}>

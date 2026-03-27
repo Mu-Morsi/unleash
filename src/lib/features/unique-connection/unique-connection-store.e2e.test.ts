@@ -5,7 +5,7 @@ import getLogger from '../../../test/fixtures/no-logger.js';
 import type {
     IUniqueConnectionStore,
     IUnleashStores,
-} from '../../../lib/types/index.js';
+} from '../../types/index.js';
 import HyperLogLog from 'hyperloglog-lite';
 import { isAfter } from 'date-fns';
 

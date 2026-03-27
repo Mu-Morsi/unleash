@@ -3,7 +3,7 @@ import type {
     IFeatureChange,
     ChangeRequestType,
     IChangeRequestFeature,
-} from '../../../changeRequest.types';
+} from '../../../changeRequest.types.ts';
 import { objectId } from 'utils/objectId';
 import { ConditionallyRender } from 'component/common/ConditionallyRender/ConditionallyRender';
 import { Alert, Box, styled } from '@mui/material';

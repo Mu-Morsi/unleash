@@ -1,4 +1,4 @@
-import type { RemoteData } from './RemoteData.tsx';
+import type { RemoteData } from './RemoteData.ts';
 import {
     Box,
     IconButton,

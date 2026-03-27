@@ -4,7 +4,6 @@ import useSWRInfinite, {
 } from 'swr/infinite';
 import { formatApiPath } from 'utils/formatPath';
 import handleErrorResponses from '../httpErrorResponseHandler.js';
-import useUiConfig from '../useUiConfig/useUiConfig.js';
 import type { IActionSetEvent } from 'interfaces/action';
 import { useUiFlag } from 'hooks/useUiFlag';
 
@@ -24,7 +23,7 @@ export const useActionEvents = (
     limit = 50,
     options: SWRInfiniteConfiguration = {},
 ) => {
-    const { isEnterprise } = useUiConfig();
+    // INGKA Fork: Removed isEnterprise() check to enable actions in OSS
     const automatedActionsEnabled = useUiFlag('automatedActions');
 
     const getKey: SWRInfiniteKeyLoader = (
@@ -35,7 +34,6 @@ export const useActionEvents = (
         if (
             !actionSetId ||
             !projectId ||
-            !isEnterprise ||
             !automatedActionsEnabled
         )
             return null;

@@ -34,7 +34,7 @@ import { UserLimitWarning } from './UserLimitWarning/UserLimitWarning.tsx';
 import { RoleCell } from 'component/common/Table/cells/RoleCell/RoleCell';
 import { useSearch } from 'hooks/useSearch';
 import Download from '@mui/icons-material/Download';
-import { StyledUsersLinkDiv } from '../Users.styles';
+import { StyledUsersLinkDiv } from '../Users.styles.ts';
 import { useUiFlag } from 'hooks/useUiFlag';
 import useUiConfig from '../../../../hooks/api/getters/useUiConfig/useUiConfig.ts';
 import { useScimSettings } from 'hooks/api/getters/useScimSettings/useScimSettings';

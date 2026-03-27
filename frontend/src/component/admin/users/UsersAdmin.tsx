@@ -6,12 +6,8 @@ import EditUser from './EditUser/EditUser.tsx';
 import NotFound from 'component/common/NotFound/NotFound';
 import { InactiveUsersList } from './InactiveUsersList/InactiveUsersList.tsx';
 import { AccessOverview } from './AccessOverview/AccessOverview.tsx';
-import { PremiumFeature } from '../../common/PremiumFeature/PremiumFeature.tsx';
-import { ConditionallyRender } from '../../common/ConditionallyRender/ConditionallyRender.tsx';
-import useUiConfig from 'hooks/api/getters/useUiConfig/useUiConfig';
 
 export const UsersAdmin = () => {
-    const { isEnterprise } = useUiConfig();
     return (
         <div>
             <PermissionGuard permissions={ADMIN}>
@@ -28,18 +24,7 @@ export const UsersAdmin = () => {
                     <Route path=':id/access' element={<AccessOverview />} />
                     <Route
                         path='inactive'
-                        element={
-                            <ConditionallyRender
-                                condition={isEnterprise()}
-                                show={<InactiveUsersList />}
-                                elseShow={
-                                    <PremiumFeature
-                                        feature='inactive-users'
-                                        page
-                                    />
-                                }
-                            />
-                        }
+                        element={<InactiveUsersList />}
                     />
                     <Route path='*' element={<NotFound />} />
                 </Routes>

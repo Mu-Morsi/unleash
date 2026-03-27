@@ -16,18 +16,18 @@ import { FakeAccountStore } from '../../test/fixtures/fake-account-store.js';
 import FakeRoleStore from '../../test/fixtures/fake-role-store.js';
 import FakeEnvironmentStore from '../features/project-environments/fake-environment-store.js';
 import FakeAccessStore from '../../test/fixtures/fake-access-store.js';
-import { GroupService } from '../services/group-service.js';
+import { GroupService } from './group-service.js';
 import type {
     IRole,
     IRoleWithProject,
-} from '../../lib/types/stores/access-store.js';
+} from '../types/stores/access-store.js';
 import {
     type IGroup,
     SYSTEM_USER,
     SYSTEM_USER_AUDIT,
-} from '../../lib/types/index.js';
-import BadDataError from '../../lib/error/bad-data-error.js';
-import { createFakeEventsService } from '../../lib/features/events/createEventsService.js';
+} from '../types/index.js';
+import BadDataError from '../error/bad-data-error.js';
+import { createFakeEventsService } from '../features/events/createEventsService.js';
 import { createFakeAccessReadModel } from '../features/access/createAccessReadModel.js';
 import { ROLE_CREATED } from '../events/index.js';
 import { expect } from 'vitest';

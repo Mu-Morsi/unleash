@@ -3,7 +3,7 @@ import PercentageCircle from 'component/common/PercentageCircle/PercentageCircle
 import {
     StyledProjectInfoWidgetContainer,
     StyledWidgetTitle,
-} from './ProjectInfo.styles';
+} from './ProjectInfo.styles.ts';
 import { WidgetFooterLink } from './WidgetFooterLink.tsx';
 
 interface IHealthWidgetProps {
