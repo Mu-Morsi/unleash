@@ -748,4 +748,3 @@ export interface IUpdateServiceAccount {
     name?: string;
     rootRole?: number;
 }
-}

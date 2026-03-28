@@ -7,6 +7,7 @@ import { RetailUnitRolloutStrategy } from 'component/feature/StrategyTypes/Retai
 import GeneralStrategy from 'component/feature/StrategyTypes/GeneralStrategy/GeneralStrategy';
 import type { IFormErrors } from 'hooks/useFormErrors';
 import produce from 'immer';
+import useUnleashContext from 'hooks/api/getters/useUnleashContext/useUnleashContext';
 
 interface IFeatureStrategyTypeProps<T extends StrategyFormState> {
     strategy: T;
@@ -71,6 +72,7 @@ export const FeatureStrategyType = <T extends StrategyFormState>({
     updateParameter,
     errors,
 }: IFeatureStrategyTypeProps<T>) => {
+    const { context } = useUnleashContext();
     switch (strategy.name) {
         case 'default':
             return <DefaultStrategy strategyDefinition={strategyDefinition} />;
@@ -88,7 +90,7 @@ export const FeatureStrategyType = <T extends StrategyFormState>({
                     context={context}
                     parameters={strategy.parameters ?? {}}
                     updateParameter={updateParameter}
-                    editable={hasAccess}
+                    editable={true}
                     errors={errors}
                 />
             );

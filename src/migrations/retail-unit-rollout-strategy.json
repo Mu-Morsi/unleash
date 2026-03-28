@@ -1,0 +1,30 @@
+{
+  "name": "retailUnitRollout",
+  "description": "Gradually roll out features to specific retail units (country codes like SE, FR, US)",
+  "parameters": [
+    {
+      "name": "retailUnits",
+      "type": "list",
+      "description": "Comma-separated list of retail unit codes (e.g., SE, FR, US)",
+      "required": true
+    },
+    {
+      "name": "rollout",
+      "type": "percentage",
+      "description": "Percentage of users within selected retail units to enable the feature for",
+      "required": false
+    },
+    {
+      "name": "stickiness",
+      "type": "string",
+      "description": "Stickiness for consistent user experience. Possible values: default, userId, sessionId, random",
+      "required": false
+    },
+    {
+      "name": "groupId",
+      "type": "string",
+      "description": "Used to correlate rollout across multiple feature flags",
+      "required": false
+    }
+  ]
+}
